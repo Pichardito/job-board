@@ -1,0 +1,5 @@
+JobBoard is a tool that lets people find jobs and search for talent within their organization.
+
+
+Creators: Carlos Pichardo, Ben Karl, Corey Leveen
+
