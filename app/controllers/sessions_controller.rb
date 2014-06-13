@@ -4,9 +4,9 @@ class SessionsController < ApplicationController
     binding.pry
   end
 
-  def create #login
-    @user_id = User.find(params[:format].to_i)
+  def create
     binding.pry
+    @user_id = User.find(params[:format].to_i)
 
     if @user_id
       session[:user_id] = @user_id

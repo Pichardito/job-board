@@ -5,7 +5,7 @@ describe WelcomeController do
  # --- INDEX ---
     describe 'GET index' do
       before :each do
-        get :root
+        get :index
       end
 
       it 'responds successfully' do
