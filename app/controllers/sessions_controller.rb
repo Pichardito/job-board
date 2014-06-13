@@ -5,10 +5,16 @@ class SessionsController < ApplicationController
   end
 
   def create #login
+    @user_id = User.find(params[:format].to_i)
     binding.pry
-    @user = User.find(params[:id])
-    user = User.from_omniauth(env["omniauth.auth"])
-    session[:user_id] = user.id
+
+    if @user_id
+      session[:user_id] = @user_id
+
+    else
+      user = User.from_omniauth(env["omniauth.auth"])
+      session[:user_id] = user.id
+    end
     redirect_to root_path
   end
 
