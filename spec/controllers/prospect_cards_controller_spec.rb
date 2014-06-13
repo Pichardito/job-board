@@ -137,12 +137,20 @@ describe ProspectCardsController do
 
     end # POST update
 
-    describe 'DELETE destroy' do
-     it "destory prospect record" do
-        expect { delete :destroy, {:id => @andre.id} }
-          .to change(Prospect, :count).by(-1)
-      end
+    describe "DELETE or destroy" do
+    it "deletes prospect_card" do
+      prospect_card = ProspectCard.create! valid_attributes
+      expect {
+        delete :destroy, {:id => prospect_card.to_param}, valid_session
+      }.to change(ProspectCard, :count).by(-1)
     end
+
+    it "redirects to the prospect_cards list" do
+      prospect_card = ProspectCard.create! valid_attributes
+      delete :destroy, {:id => prospect_card.to_param}, valid_session
+      expect(response).to redirect_to(prospect_cards_url)
+    end
+  end
 
  
 

@@ -15,15 +15,6 @@ describe WelcomeController do
         expect(actual).to eq(expected)
       end
 
-      it '' do
-        actual = 
-        expected = 
-        expect(actual).to eq(expected)
-      end
-
     end # GET index
 
-
-
-	
 end #WelcomeController
