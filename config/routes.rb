@@ -5,8 +5,8 @@ Rails.application.routes.draw do
 # Cards
   get '/cards' => 'prospect_cards#index'
   get '/cards/new' => 'prospect_cards#new', as: 'new_card'
-  post '/cards/new' => 'prospect_cards#create'
-  get '/cards/show' => 'prospect_cards#show', as: 'show'
+  post '/cards' => 'prospect_cards#create'
+  get '/card/:id' => 'prospect_cards#show', as: 'show'
 
 
 # LinkedIn
