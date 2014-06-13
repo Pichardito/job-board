@@ -22,7 +22,7 @@ class ProspectCardsController < ApplicationController
 
   end
 
-  def upate
+  def update
 
   end
 
