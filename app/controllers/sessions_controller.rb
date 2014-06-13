@@ -12,6 +12,7 @@ class SessionsController < ApplicationController
   end
 
   def new #login form
+
   end
 
 end

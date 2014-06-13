@@ -1,7 +1,7 @@
 class ProspectCardsController < ApplicationController
 
   def index
-
+    @prospect_cards = ProspectCard.all
   end
 
   def new
