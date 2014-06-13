@@ -33,7 +33,7 @@ class ProspectCardsController < ApplicationController
   private
 
   def card_params
-    params.require(:prospect_card).permit(:name, :isa, :looking_for, :description)
+    params.require(:prospect_card).permit(:name, :title, :looking_for, :description)
   end
 
 end
