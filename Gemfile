@@ -44,7 +44,8 @@ end
 group :development, :test do
   gem 'pry'
   gem 'spring'
-  gem 'rspec-rails' 
+  gem 'rspec-rails', '~> 2.14.2'
+
 end
 
 gem 'omniauth'
