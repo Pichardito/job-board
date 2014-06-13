@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe UserController do 
+describe UsersController do
 
 
      # --- SHOW ---
@@ -16,8 +16,8 @@ describe UserController do
       end
 
       it '' do
-        actual = 
-        expected = 
+        actual =
+        expected =
         expect(actual).to eq(expected)
       end
 
