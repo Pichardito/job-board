@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   get '/cards' => 'prospect_cards#index'
 
-  get '/auth/linkedin/callback' => 'user#show'
+  get '/auth/:provider/callback' => 'sessions#create'
+  get '/auth/failure' => 'welcome#index'
+  get '/logout' => 'sessions#destroy'
 
 end

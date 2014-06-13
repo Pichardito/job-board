@@ -8,6 +8,15 @@
 </head>
 <body>
 
+  <div id="user_nav">
+    <% if current_user %>
+      Signed in as <%= current_user.name %>
+      <%= link_to 'Sign out', logout_path, id: 'logout' %>
+    <% else %>
+      <%= link_to "Sign in with LinkedIn", '/auth/linkedin', id: 'sign_in' %>
+    <% end %>
+  </div>
+
 <%= yield %>
 
 </body>
