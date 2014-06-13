@@ -11,7 +11,7 @@ class ProspectCardsController < ApplicationController
   def create
     prospect_card = ProspectCard.create(card_params)
    # current_user.prospect_cards << prospect_card
-    redirect_to prospect_card_path(prospect_card)
+    redirect_to prospect_cards_path
   end
 
   def show
