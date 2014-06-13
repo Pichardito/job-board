@@ -41,12 +41,12 @@ group :production do
   gem 'rails_12factor'
 end
 
-group :development, :test do
+group :development do
   gem 'pry'
   gem 'spring'
-  gem 'rspec-rails', '~> 2.14.2'
 end
 
 gem 'omniauth'
 gem 'omniauth-linkedin'
 gem 'linkedin'
+gem 'sorcery'

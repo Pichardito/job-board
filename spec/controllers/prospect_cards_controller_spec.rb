@@ -16,8 +16,8 @@ describe ProspectCardsController do
       end
 
       it '' do
-        actual = 
-        expected = 
+        actual =
+        expected =
         expect(actual).to eq(expected)
       end
 
@@ -79,8 +79,8 @@ describe ProspectCardsController do
       end
 
       it '' do
-        actual = 
-        expected = 
+        actual =
+        expected =
         expect(actual).to eq(expected)
       end
 
@@ -104,8 +104,8 @@ describe ProspectCardsController do
       end
 
       it '' do
-        actual = 
-        expected = 
+        actual =
+        expected =
         expect(actual).to eq(expected)
       end
 
@@ -153,6 +153,6 @@ describe ProspectCardsController do
 
 
 
- 
+
 
 end # PeopleController
