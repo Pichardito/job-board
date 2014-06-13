@@ -1,3 +1,12 @@
-<h2>This is the index for prospect_cards</h2>
+<h1>This is the index for prospect_cards</h1>
+<h2>AKA the Board</h2>
 
-<%= link_to "Create a card", new_prospect_card_path %>
+<% @prospect_cards.each do |card| %>
+<div class="job-card">
+  <p><%= card.name %></p>
+  <p>Is a: <%= card.title %></p>
+  <p>Looking for: <%= card.looking_for %></p>
+  <p>Description: <%= card.description %></p>
+</div>
+<% end %>
+

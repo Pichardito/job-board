@@ -13,3 +13,5 @@ JobBoard Changelog
 *Card form and views completed
 *Environment variables on Heroku
 *OAuth functional on Heroku
+*Card form posting to database
+
