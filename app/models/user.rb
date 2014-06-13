@@ -7,6 +7,9 @@ class User < ActiveRecord::Base
       user.name = auth.info.name
       user.oauth_token = auth.credentials.token
       user.oauth_expires_at = Time.now + auth.extra.access_token.params[:oauth_expires_in].to_i
+      user.linkedin_email = auth.info['email']
+      user.linkedin_profile_img = auth.info['image']
+      binding.pry
       user.save!
     end
   end
