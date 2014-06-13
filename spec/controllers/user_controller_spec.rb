@@ -6,7 +6,7 @@ describe UserController do
      # --- SHOW ---
     describe 'GET show' do
       before :each do
-        get :show, :id => @andre.id
+        get :show, :id => @prospect.id
       end
 
       it 'responds successfully' do
