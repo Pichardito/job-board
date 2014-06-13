@@ -5,15 +5,17 @@ class ProspectCardsController < ApplicationController
   end
 
   def new
-
+    @prospect_card = ProspectCard.new
   end
 
   def create
-
+    prospect_card = ProspectCard.create(card_params)
+   # current_user.prospect_cards << prospect_card
+    redirect_to show_path
   end
 
   def show
-
+    @prospect_cards = ProspectCard.all
   end
 
   def edit
@@ -26,6 +28,12 @@ class ProspectCardsController < ApplicationController
 
   def destroy
 
+  end
+
+  private
+
+  def card_params
+    params.require(:prospect_card).permit(:name, :is_a, :looking_for, :description)
   end
 
 end
