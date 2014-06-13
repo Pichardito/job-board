@@ -8,7 +8,8 @@ end
 
 def create
   @user = User.create(user_params)
-  redirect_to login_path
+  binding.pry
+  redirect_to login_path(@user)
 end
 
 private
