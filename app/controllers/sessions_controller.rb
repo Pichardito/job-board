@@ -11,4 +11,7 @@ class SessionsController < ApplicationController
     redirect_to root_path
   end
 
+  def new #login form
+  end
+
 end
