@@ -29,8 +29,8 @@ class ProspectCardsController < ApplicationController
   def destroy
     @prospect_card.destroy
     respond_to do |format|
-      format.html { redirect_to prospect_cards_url, notice: 'Prospect card was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html { redirect_to prospect_cards_path }
+      format.json
     end
 
   end
