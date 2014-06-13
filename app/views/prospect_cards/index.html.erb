@@ -1,5 +1,12 @@
 <h1>This is the index for prospect_cards</h1>
 <h2>AKA the Board</h2>
 
-<div class="board-card"></div>
-<% @prospect_cards %>
+<% @prospect_cards.each do |card| %>
+<div class="job-card">
+  <p><%= card.name %></p>
+  <p>Is a: <%= card.title %></p>
+  <p>Looking for: <%= card.looking_for %></p>
+  <p>Description: <%= card.description %></p>
+</div>
+<% end %>
+
