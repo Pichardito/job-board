@@ -1,9 +1,9 @@
 class User < ActiveRecord::Base
   authenticates_with_sorcery!
 
-  validates_presence_of :password, :on => :create
-  validates_presence_of :email, :on => :create
-  validates_uniqueness_of :email
+  # validates_presence_of :password, :on => :create
+  # validates_presence_of :email, :on => :create
+  # validates_uniqueness_of :email
 
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
