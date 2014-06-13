@@ -148,7 +148,7 @@ describe ProspectCardsController do
       end
     end
 
-  end # given a person
+ 
 
 
 
