@@ -35,32 +35,28 @@ describe ProspectCardsController do
       expect(actual).to eq(expected)
     end
 
-    it 'renders the new template' do
-      expect(response).to render_template('new')
+    it "assigns a new prospect card as @prospect_card" do
+      get :new
+      assigns(:prospect_card).should be_a_new(ProspectCard)
     end
+
+
 
   end # GET new
 
   # --- CREATE ---
   describe 'POST create' do
     before :each do
-      post :create, {:person => {name: 'Kathew Lamp', email: 'klool@lampmail.com'}}
+      post :create, {:person => {name: 'Carlos Pichardo'}}
     end
 
-    it "response with a redirect" do
-      actual = response.code
-      expected = '302'
-      expect(actual).to eq(expected)
-    end
+    it "assigns a newly created prospect card as prospect_card" do
+        post :create
+        assigns(prospect_card).should be_a(ProspectCard)
+      end
 
-    it "inserts a person record" do
-      actual = Person.last.name
-      expected = ''
-      expect(actual).to eq(expected)
-    end
-
-    it "redirects to show" do
-      response.should redirect_to person_path(Person.last)
+    it "redirects to created prospect card" do
+      response.should redirect_to (ProspectCard.last)
     end
 
   end #POST CREATE
@@ -69,7 +65,7 @@ describe ProspectCardsController do
     # --- SHOW ---
     describe 'GET show' do
       before :each do
-        get :show, :id => @andre.id
+        get :show, :id => @prospect.id
       end
 
       it 'responds successfully' do
