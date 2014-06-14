@@ -35,11 +35,6 @@ before_action :require_login
   def destroy
     @prospect_card = ProspectCard.find(params[:id])
     @prospect_card.destroy
-    respond_to do |format|
-      format.html { redirect_to prospect_cards_path }
-      format.json
-    end
-
   end
 
   private
