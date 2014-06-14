@@ -4,8 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
 
-
-    helper_method :current_user
+  helper_method :current_user
 
   def current_user
     User.find(session[:user_id]) if session[:user_id]
@@ -14,6 +13,13 @@ class ApplicationController < ActionController::Base
   def authorize
     redirect_to root_path if current_user.nil?
   end
+
+  private
+
+  def not_authenticated
+    redirect_to login_path, alert: "Please login first"
+  end
+
 
   # private
 

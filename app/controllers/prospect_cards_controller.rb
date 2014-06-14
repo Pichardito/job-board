@@ -1,5 +1,7 @@
 class ProspectCardsController < ApplicationController
 
+before_action :require_login
+
   def index
     @prospect_cards = ProspectCard.all
   end
