@@ -3,7 +3,6 @@ class User < ActiveRecord::Base
 
   #COMMENTED OUT BECAUSE THEY CONFLICT WITH LINKEDIN OAUTH
 
-
   # validates_presence_of :password, on: :create
   # validates_presence_of :email, on: :create
   # validates_uniqueness_of :email
@@ -21,7 +20,8 @@ class User < ActiveRecord::Base
       user.linkedin_email = auth.info['email']
       user.linkedin_profile_img = auth.info['image']
       #POSSIBLE DUMMY VARIABLES TO FORCE PASS VALIDATION
-      #user.password = ''
+      #PLACEHOLDER PASSWORD TO PASS VALIDATIONS
+      user.password = '-placeholder-'
       #user.email = 'auth.info['email']
       user.save!
     end
