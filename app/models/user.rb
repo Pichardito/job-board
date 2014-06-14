@@ -4,9 +4,13 @@ class User < ActiveRecord::Base
   #COMMENTED OUT BECAUSE THEY CONFLICT WITH LINKEDIN OAUTH
 
 
-  validates_presence_of :password, on: :create
-  validates_presence_of :email, on: :create
-  validates_uniqueness_of :email
+  # validates_presence_of :password, on: :create
+  # validates_presence_of :email, on: :create
+  # validates_uniqueness_of :email
+
+  validates :password, length: { minimum: 5 }
+  validates :password
+  validates :email, uniqueness: true
 
 
   def self.from_omniauth(auth)
