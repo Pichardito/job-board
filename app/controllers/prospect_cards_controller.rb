@@ -11,7 +11,6 @@ before_action :require_login
   end
 
   def create
-    binding.pry
     prospect_card = ProspectCard.create(card_params)
     current_user.prospect_cards << prospect_card
     binding.pry
