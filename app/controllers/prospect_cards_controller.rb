@@ -19,11 +19,13 @@ class ProspectCardsController < ApplicationController
   end
 
   def edit
-
+    @prospect_cards = ProspectCard.find(params[:id])
   end
 
   def update
-
+    prospect_card = ProspectCard.find(params[:id])
+    prospect_card.update(card_params)
+    redirect_to prospect_cards_path(prospect_card)
   end
 
   def destroy

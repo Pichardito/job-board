@@ -8,7 +8,6 @@ end
 
 def create
   @user = User.create(user_params)
-  binding.pry
   redirect_to login_path(@user, :id => params[:id])
 end
 

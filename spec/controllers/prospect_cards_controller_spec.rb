@@ -55,22 +55,28 @@ describe ProspectCardsController do
   # end #POST CREATE
 
 
-    # # --- EDIT ---
-    # describe 'GET edit' do
-    #   before :each do
-    #     get :edit, :id => @prospect.id
-    #   end
+    # --- EDIT ---
+    describe 'GET edit' do
 
-    #   it 'responds successfully' do
-    #     actual = response.code
-    #     expected = '200'
-    #     expect(actual).to eq(expected)
-    #   end
+      # it 'responds successfully' do
+      #   actual = response.code
+      #   expected = '200'
+      #   expect(actual).to eq(expected)
+      # end
 
-    #   it 'renders the edit template' do
-    #     expect(response).to render_template('edit')
-    #   end
-    # end # GET edit
+      # it 'renders the edit template' do
+      #   expect(response).to render_template('edit')
+      # end
+
+      it "edits the prospect card" do 
+        new_card = ProspectCard.new()
+        new_card.name = "Hi I'm a card"
+        new_card.save
+        post :update, {:id => @new_card.id, :ProspectCard => {name: "Hi I'm a prospect card" }}
+        expect(new_card.name).to eq("Hi I'm a prospect card")
+      end 
+
+    end # GET edit
 
     describe "DELETE or destroy" do
 
