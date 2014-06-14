@@ -1,4 +1,4 @@
-class RecruiterCardsController < ApplicationController
+  class RecruiterCardsController < ApplicationController
 
 before_action :require_login
 

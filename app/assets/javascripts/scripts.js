@@ -1,3 +1,4 @@
 $(function(){
-  $('.job-card').draggable();
+  $('.prospect-card').draggable();
+  $('.recruiter-card').draggable();
   })

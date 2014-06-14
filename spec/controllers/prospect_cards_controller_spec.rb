@@ -97,4 +97,4 @@ describe ProspectCardsController do
   end #DELETE
 
 
-end # PeopleController
+end # ProspectCardsController
