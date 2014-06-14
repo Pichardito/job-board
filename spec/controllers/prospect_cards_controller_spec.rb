@@ -3,16 +3,9 @@ require 'spec_helper'
 describe ProspectCardsController do
 
 
-  describe 'given a person' do
-  
-      @andre = ProspectCard.new()
-      @andre.name = 'Andre'
-      @andre.save
-    end
-
-
     # --- INDEX ---
     describe 'GET index' do
+
       before :each do
         get :index
       end
@@ -23,117 +16,79 @@ describe ProspectCardsController do
         expect(actual).to eq(expected)
       end
 
-      it '' do
-        actual =
-        expected =
-        expect(actual).to eq(expected)
-      end
-
     end # GET index
 
-     # --- NEW ---
-  describe 'GET new' do
-    before :each do
-      get :new
-    end
+  # TESTS CREATION OF NEW CARD
+  #  # --- NEW ---
+  # describe 'GET new' do
+    # before :each do
+    #   get :new
+    # end
 
-    it 'responds successfully' do
-      actual = response.code
-      expected = '200'
-      expect(actual).to eq(expected)
-    end
+    # it 'responds successfully' do
+    #   actual = response.code
+    #   expected = '200'
+    #   expect(actual).to eq(expected)
+    # end
 
-    it "assigns a new prospect card as @prospect_card" do
-      get :new
-      assigns(:prospect_card).should be_a_new(ProspectCard)
-    end
-
-
-
-  end # GET new
+    # it "assigns a new prospect card as @prospect_card" do
+    #   get :new
+    #   assigns(:prospect_card).should be_a_new(ProspectCard)
+    # end
+  #end # GET new
 
   # --- CREATE ---
-  describe 'POST create' do
-    before :each do
-      post :create, {:person => {name: 'Carlos Pichardo'}}
-    end
 
-    it "assigns a newly created prospect card as prospect_card" do
-        post :create
-        assigns(prospect_card).should be_a(ProspectCard)
-      end
+  # describe 'POST create' do
+  #   before :each do
+  #     post :create, {:person => {name: 'Carlos Pichardo'}}
+  #   end
 
-    it "redirects to created prospect card" do
-      response.should redirect_to (ProspectCard.last)
-    end
+  #   it "assigns a newly created prospect card as prospect_card" do
+  #       post :create
+  #       assigns(prospect_card).should be_a(ProspectCard)
+  #     end
 
-  end #POST CREATE
-
-
-    # --- SHOW ---
-    describe 'GET show' do
-      before :each do
-        get :show, :id => @prospect_card.id
-      end
-
-      it 'responds successfully' do
-        actual = response.code
-        expected = '200'
-        expect(actual).to eq(expected)
-      end
-
-      
-
-      it 'renders the show template' do
-        expect(response).to render_template('show')
-      end
-
-    end # GET show
+  #   it "redirects to created prospect card" do
+  #     response.should redirect_to (ProspectCard.last)
+  #   end
+  # end #POST CREATE
 
 
-    # --- EDIT ---
-    describe 'GET edit' do
-      before :each do
-        get :edit, :id => @prospect_card.id
-      end
+    # # --- EDIT ---
+    # describe 'GET edit' do
+    #   before :each do
+    #     get :edit, :id => @prospect.id
+    #   end
 
-      it 'responds successfully' do
-        actual = response.code
-        expected = '200'
-        expect(actual).to eq(expected)
-      end
+    #   it 'responds successfully' do
+    #     actual = response.code
+    #     expected = '200'
+    #     expect(actual).to eq(expected)
+    #   end
 
-      
-
-      it 'renders the edit template' do
-        expect(response).to render_template('edit')
-      end
-
-    end # GET edit
-
-   
+    #   it 'renders the edit template' do
+    #     expect(response).to render_template('edit')
+    #   end
+    # end # GET edit
 
     describe "DELETE or destroy" do
+
     it "deletes prospect_card" do
-      
-      prospect_card = ProspectCard.create()
-      expect {
-        delete :destroy, {:id => prospect_card.to_param}, valid_session
-      }.to change(ProspectCard, :count).by(-1)
+      new_card = ProspectCard.new()
+      new_card.name = "Hi I'm a card"
+      new_card.save
+      expect { delete :destroy, {:id => new_card.id} }
+       .to change(ProspectCard, :count).by(-1)
     end
 
-    it "redirects to the prospect_cards list" do
-      prospect_card = ProspectCard.create! valid_attributes
-      delete :destroy, {:id => prospect_card.to_param}, valid_session
-      expect(response).to redirect_to(prospect_cards_path)
-    end
-  end
+    # it "redirects to the prospect_cards list" do
+    #   prospect_card = ProspectCard.create! valid_attributes
+    #   delete :destroy, {:id => prospect_card.to_param}, valid_session
+    #   expect(response).to redirect_to(prospect_cards_path)
+    # end
 
- 
-
-
-
-
+  end #DELETE
 
 
 end # PeopleController
