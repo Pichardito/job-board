@@ -9,7 +9,6 @@ class User < ActiveRecord::Base
   # validates_uniqueness_of :email
 
   validates :password, length: { minimum: 5 }
-  validates :password
   validates :email, uniqueness: true
 
   def self.from_omniauth(auth)
