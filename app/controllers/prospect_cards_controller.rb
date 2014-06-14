@@ -1,4 +1,5 @@
 class ProspectCardsController < ApplicationController
+  belongs_to :user
 
 before_action :require_login
 
