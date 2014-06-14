@@ -1,0 +1,3 @@
+$(function(){
+  $('.job-card').draggable();
+  })
