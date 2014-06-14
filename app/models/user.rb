@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
   authenticates_with_sorcery!
-  has_many :prospect_cards
 
   #COMMENTED OUT BECAUSE THEY CONFLICT WITH LINKEDIN OAUTH
 
@@ -10,7 +9,7 @@ class User < ActiveRecord::Base
   # validates_uniqueness_of :email
 
   validates :email, uniqueness: true
-  validates :password
+  validates :password, length: { minimum: 5 }
 
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
