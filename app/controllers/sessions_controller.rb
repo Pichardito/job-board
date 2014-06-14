@@ -1,24 +1,23 @@
 class SessionsController < ApplicationController
 
   def new #login form
-
   end
 
   def create #login
     token = params[:oauth_token]
-
     if token
-      binding.pry
       user = User.from_omniauth(env["omniauth.auth"])
       session[:user_id] = user.id
-      binding.pry
+      redirect_to prospect_cards_path
     else
-      user = User.find_by(email: params[:email])
-      session[:user_id] = user.id
-      binding.pry
+      @user = login(params[:email], params[:password])
+      if @user
+        session[:user_id] = @user.id
+        redirect_to prospect_cards_path
+      else
+        redirect_to login_path
+      end
     end
-
-    redirect_to prospect_cards_path
   end
 
   def destroy
