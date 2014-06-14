@@ -21,7 +21,8 @@ before_action :require_login
   end
 
   def edit
-    @prospect_cards = ProspectCard.find(params[:id])
+    @prospect_card = ProspectCard.find(params[:id])
+    
   end
 
   def update
