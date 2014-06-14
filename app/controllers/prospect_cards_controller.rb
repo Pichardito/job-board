@@ -4,6 +4,7 @@ before_action :require_login
 
   def index
     @prospect_cards = ProspectCard.all
+    @recruiter_cards = RecruiterCard.all
   end
 
   def new
@@ -11,35 +12,33 @@ before_action :require_login
   end
 
   def create
-    prospect_card = ProspectCard.create(card_params)
+    prospect_card = ProspectCard.create(prospect_card_params)
     current_user.prospect_cards << prospect_card
     redirect_to prospect_cards_path
   end
 
   def show
-    @prospect_cards = ProspectCard.all
   end
 
   def edit
     @prospect_card = ProspectCard.find(params[:id])
-
   end
 
   def update
     prospect_card = ProspectCard.find(params[:id])
-    prospect_card.update(card_params)
-    redirect_to prospect_cards_path(prospect_card)
+    prospect_card.update(prospect_card_params)
+    redirect_to prospect_cards_path
   end
 
   def destroy
-    @prospect_card = ProspectCard.find(params[:id])
-    @prospect_card.destroy
+    prospect_card = ProspectCard.find(params[:id])
+    prospect_card.destroy
     redirect_to prospect_cards_path
   end
 
   private
 
-  def card_params
+  def prospect_card_params
     params.require(:prospect_card).permit(:name, :title, :looking_for, :description)
   end
 
