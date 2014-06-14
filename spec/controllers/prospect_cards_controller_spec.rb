@@ -68,20 +68,20 @@ describe ProspectCardsController do
       #   expect(response).to render_template('edit')
       # end
 
-      it "edits the prospect card" do 
-        new_card = ProspectCard.new()
+      it "edits the prospect card" do
+        new_card = ProspectCard.new
         new_card.name = "Hi I'm a card"
         new_card.save
         post :update, {:id => @new_card.id, :ProspectCard => {name: "Hi I'm a prospect card" }}
         expect(new_card.name).to eq("Hi I'm a prospect card")
-      end 
+      end
 
     end # GET edit
 
     describe "DELETE or destroy" do
 
     it "deletes prospect_card" do
-      new_card = ProspectCard.new()
+      new_card = ProspectCard.new
       new_card.name = "Hi I'm a card"
       new_card.save
       expect { delete :destroy, {:id => new_card.id} }
