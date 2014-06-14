@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe UsersController do
 
-  # ***NEW***
+  # NEW
   describe 'GET new' do
     before :each do
       get :new
@@ -19,5 +19,27 @@ describe UsersController do
     end
   end # GET new
 
+  # CREATE
+  describe 'POST create' do
+    before :each do
+      post :create, {:user => {first_name: 'Kathew', last_name: 'Bod', email: 'boddabing@example.com', password: 'password'}}
+    end
+
+    it 'responds with a redirect' do
+      actual = response.code
+      expected = '302'
+      expect(actual).to eq(expected)
+    end
+
+    it 'inserts a user record' do
+      actual = User.last.first_name
+      expected = 'Kathew'
+      expect(actual).to eq(expected)
+    end
+
+    it 'redirects to prospect_cards_path' do
+      response.should redirect_to login_path
+    end
+  end # POST create
 
 end # UserController
