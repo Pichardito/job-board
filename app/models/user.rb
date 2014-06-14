@@ -4,9 +4,10 @@ class User < ActiveRecord::Base
   #COMMENTED OUT BECAUSE THEY CONFLICT WITH LINKEDIN OAUTH
 
 
-  validates_presence_of :password, :on => :create
-  validates_presence_of :email, :on => :create
+  validates_presence_of :password, on: :create
+  validates_presence_of :email, on: :create
   validates_uniqueness_of :email
+
 
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
