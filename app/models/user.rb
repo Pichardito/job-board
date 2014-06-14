@@ -8,8 +8,8 @@ class User < ActiveRecord::Base
   # validates_presence_of :email, on: :create
   # validates_uniqueness_of :email
 
-  validates :password, length: { minimum: 5 }
   validates :email, uniqueness: true
+  validates :password, length: { minimum: 5 }
 
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|

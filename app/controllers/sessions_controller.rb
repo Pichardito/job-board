@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
         session[:user_id] = @user.id
         redirect_to prospect_cards_path
       else
-        redirect_to login_path
+        redirect_to(:login, notice: 'Login Failed')
       end
     end
   end

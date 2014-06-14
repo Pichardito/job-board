@@ -1,3 +1,4 @@
+
 <h4>Please login</h4>
 
 <%= form_tag sessions_path do %>
@@ -8,6 +9,11 @@
   <br>
   <%= submit_tag "Login" %>
 <% end %>
+
+<div class="error-container">
+  <p id="notice" ><%= flash[:notice] %></p>
+  <p id="alert" ><%= flash[:alert] %></p>
+</div>
 
 <br>
 <%= link_to "Login with LinkedIn", '/auth/linkedin', id: 'sign_in' %>
