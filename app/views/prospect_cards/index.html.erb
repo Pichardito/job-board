@@ -9,10 +9,10 @@
   <p>Is a: <%= card.title %></p>
   <p>Looking for: <%= card.looking_for %></p>
   <p>Description: <%= card.description %></p>
-  <%# if card.user_id == curren_user.id %>
+  <% if card.user_id == current_user.id %>
   <p><%= link_to 'Destroy', prospect_card_path(card.id), method: :delete %></p>
   <p><%= link_to 'Edit', edit_prospect_card_path(card.id), method: :get %></p>
-  <%# end %>
+  <% end %>
 </div>
 <% end %>
 

@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   authenticates_with_sorcery!
   has_many :prospect_cards
+
   #COMMENTED OUT BECAUSE THEY CONFLICT WITH LINKEDIN OAUTH
 
   # validates_presence_of :password, on: :create
