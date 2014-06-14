@@ -1,3 +1,3 @@
 class ProspectCard < ActiveRecord::Base
-    belongs_to :users
+  belongs_to :users
 end

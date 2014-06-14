@@ -1,9 +1,12 @@
 <h1>General Assembly Search Engine</h1>
 
-<p><%= link_to "Create a New Card", new_prospect_card_path %></p>
+<p>
+  <%= link_to "Create a New Prospect Card", new_prospect_card_path %> |
+  <%= link_to 'Create a New Recruiter Card', new_recruiter_card_path %>
+</p>
 
 <% @prospect_cards.each do |card| %>
-<div class="job-card">
+<div class="prospect-card">
   <p><%= card.name %></p>
   <p>Is a: <%= card.title %></p>
   <p>Looking for: <%= card.looking_for %></p>
@@ -15,3 +18,15 @@
 </div>
 <% end %>
 
+<% @recruiter_cards.each do |card| %>
+<div class="recruiter-card">
+  <p><%= card.name %></p>
+  <p>Is a: <%= card.title %></p>
+  <p>Looking for: <%= card.looking_for %></p>
+  <p>Description: <%= card.description %></p>
+  <% if card.user_id == current_user.id %>
+  <p><%= link_to 'Destroy', recruiter_card_path(card.id), method: :delete %></p>
+  <p><%= link_to 'Edit', edit_recruiter_card_path(card.id), method: :get %></p>
+  <% end %>
+</div>
+<% end %>

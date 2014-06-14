@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140614184942) do
+ActiveRecord::Schema.define(version: 20140614210238) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,16 @@ ActiveRecord::Schema.define(version: 20140614184942) do
   end
 
   add_index "prospect_cards", ["user_id"], name: "index_prospect_cards_on_user_id", using: :btree
+
+  create_table "recruiter_cards", force: true do |t|
+    t.string   "name"
+    t.string   "title"
+    t.string   "looking_for"
+    t.text     "description"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "provider"

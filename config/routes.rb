@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 # # Cards
 
 resources :prospect_cards
+resources :recruiter_cards
 
 # LinkedIn
   get '/auth/:provider/callback' => 'sessions#create'
