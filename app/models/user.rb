@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   authenticates_with_sorcery!
-
+  has_many :prospect_cards
   #COMMENTED OUT BECAUSE THEY CONFLICT WITH LINKEDIN OAUTH
 
   # validates_presence_of :password, on: :create
@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
       user.linkedin_profile_img = auth.info['image']
       #POSSIBLE DUMMY VARIABLES TO FORCE PASS VALIDATION
       #PLACEHOLDER PASSWORD TO PASS VALIDATIONS
-      user.password = '-placeholder-'
+      user.password = user.crypted_password
       #user.email = 'auth.info['email']
       user.save!
     end

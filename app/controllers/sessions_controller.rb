@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
     token = params[:oauth_token]
     if token
       user = User.from_omniauth(env["omniauth.auth"])
+      binding.pry
       session[:user_id] = user.id
       redirect_to prospect_cards_path
     else
