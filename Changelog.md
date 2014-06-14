@@ -19,6 +19,6 @@ JobBoard Changelog
 * User can destroy cards
 * Users can login
 * Only Logged in users can see and create cards
-
+* Tests for prospect_cards_controller
 
 
