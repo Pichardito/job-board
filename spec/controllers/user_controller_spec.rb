@@ -9,5 +9,6 @@ describe UsersController do
       @corey.save
     end
 
+end
 
 end # UserController
