@@ -15,3 +15,10 @@ JobBoard Changelog
 *OAuth functional on Heroku
 *Card form posting to database
 
+6/14/14 -
+* User can destroy cards
+* Users can login
+* Only Logged in users can see and create cards
+
+
+

@@ -11,6 +11,7 @@
   <p>Description: <%= card.description %></p>
   <%# if card.user_id == curren_user.id %>
   <p><%= link_to 'Destroy', prospect_card_path(card.id), method: :delete %></p>
+  <p><%= link_to 'Edit', edit_prospect_card_path(card.id), method: :get %></p>
   <%# end %>
 </div>
 <% end %>
