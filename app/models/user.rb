@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  require 'digest/sha1'
   authenticates_with_sorcery!
   has_many :prospect_cards
 
@@ -22,7 +23,8 @@ class User < ActiveRecord::Base
       user.linkedin_profile_img = auth.info['image']
       #POSSIBLE DUMMY VARIABLES TO FORCE PASS VALIDATION
       #PLACEHOLDER PASSWORD TO PASS VALIDATIONS
-      user.password = user.crypted_password
+      rand_string = (0...8).map { (65 + rand(26)).chr }.join
+      user.password = Digest::SHA1.hexdigest rand_string
       #user.email = 'auth.info['email']
       user.save!
     end
