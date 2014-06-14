@@ -1,5 +1,4 @@
 class ProspectCardsController < ApplicationController
-  belongs_to :user
 
 before_action :require_login
 
@@ -12,8 +11,10 @@ before_action :require_login
   end
 
   def create
+    binding.pry
     prospect_card = ProspectCard.create(card_params)
-   # current_user.prospect_cards << prospect_card
+    current_user.prospect_cards << prospect_card
+    binding.pry
     redirect_to prospect_cards_path
   end
 
@@ -23,7 +24,7 @@ before_action :require_login
 
   def edit
     @prospect_card = ProspectCard.find(params[:id])
-    
+
   end
 
   def update
