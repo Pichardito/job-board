@@ -5,8 +5,12 @@
   <%= text_field_tag :email %>
   <%= label_tag :password %>
   <%= password_field_tag :password %>
-  <%= submit_tag %>
+  <br>
+  <%= submit_tag "Login" %>
 <% end %>
 
 <br>
-<%= link_to "Don't have an account yet?", root_path %>
+<%= link_to "Login with LinkedIn", '/auth/linkedin', id: 'sign_in' %>
+
+<br>
+<%= link_to "Don't have an account yet?", signup_path %>
