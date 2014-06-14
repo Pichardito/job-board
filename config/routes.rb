@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
 # # Cards
 
-resources :prospect_cards, except: [:destroy, :edit, :update]
+resources :prospect_cards
 
 # LinkedIn
   get '/auth/:provider/callback' => 'sessions#create'

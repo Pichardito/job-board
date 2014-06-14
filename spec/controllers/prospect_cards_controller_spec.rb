@@ -65,7 +65,7 @@ describe ProspectCardsController do
     # --- SHOW ---
     describe 'GET show' do
       before :each do
-        get :show, :id => @prospect.id
+        get :show, :id => @prospect_card.id
       end
 
       it 'responds successfully' do
@@ -74,11 +74,7 @@ describe ProspectCardsController do
         expect(actual).to eq(expected)
       end
 
-      it '' do
-        actual =
-        expected =
-        expect(actual).to eq(expected)
-      end
+      
 
       it 'renders the show template' do
         expect(response).to render_template('show')
@@ -99,11 +95,7 @@ describe ProspectCardsController do
         expect(actual).to eq(expected)
       end
 
-      it '' do
-        actual =
-        expected =
-        expect(actual).to eq(expected)
-      end
+      
 
       it 'renders the edit template' do
         expect(response).to render_template('edit')
@@ -111,38 +103,22 @@ describe ProspectCardsController do
 
     end # GET edit
 
-    # --- UPDATE ---
-    describe 'POST update' do
+   
 
-      before :each do
-        post :update, {:id => @andre.id, :person => {name: 'nondre'}}
-      end
-
-      it "responds with a redirect" do
-        actual = response.code
-        expected = '302'
-        expect(actual).to eq(expected)
-      end
-
-      it 'updates person record' do
-        @andre.reload
-        actual = @prospect.name
-        expected = ''
-        expect(actual).to eq(expected)
-      end
-
-      it "redirects to show" do
-        response.should redirect_to person_path(@prospect)
-      end
-
-    end # POST update
-
-    describe 'DELETE destroy' do
-     it "destory prospect record" do
-        expect { delete :destroy, {:id => @andre.id} }
-          .to change(Prospect, :count).by(-1)
-      end
+    describe "DELETE or destroy" do
+    it "deletes prospect_card" do
+      prospect_card = ProspectCard.create! valid_attributes
+      expect {
+        delete :destroy, {:id => prospect_card.to_param}, valid_session
+      }.to change(ProspectCard, :count).by(-1)
     end
+
+    it "redirects to the prospect_cards list" do
+      prospect_card = ProspectCard.create! valid_attributes
+      delete :destroy, {:id => prospect_card.to_param}, valid_session
+      expect(response).to redirect_to(prospect_cards_path)
+    end
+  end
 
  
 

@@ -9,5 +9,8 @@
   <p>Is a: <%= card.title %></p>
   <p>Looking for: <%= card.looking_for %></p>
   <p>Description: <%= card.description %></p>
-<% end %>
+  <p><%= link_to 'Destroy', prospect_card_path, method: :delete%></p>
 </div>
+
+<% end %>
+

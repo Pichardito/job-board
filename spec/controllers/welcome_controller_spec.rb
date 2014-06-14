@@ -14,6 +14,7 @@ describe WelcomeController do
         expect(actual).to eq(expected)
       end
 
-    end # GET INDEX
+
+    end # GET index
 
 end #WelcomeController
