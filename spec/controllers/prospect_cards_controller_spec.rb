@@ -3,6 +3,14 @@ require 'spec_helper'
 describe ProspectCardsController do
 
 
+  describe 'given a person' do
+  
+      @andre = ProspectCard.new()
+      @andre.name = 'Andre'
+      @andre.save
+    end
+
+
     # --- INDEX ---
     describe 'GET index' do
       before :each do
@@ -86,7 +94,7 @@ describe ProspectCardsController do
     # --- EDIT ---
     describe 'GET edit' do
       before :each do
-        get :edit, :id => @prospect.id
+        get :edit, :id => @prospect_card.id
       end
 
       it 'responds successfully' do
@@ -107,7 +115,8 @@ describe ProspectCardsController do
 
     describe "DELETE or destroy" do
     it "deletes prospect_card" do
-      prospect_card = ProspectCard.create! valid_attributes
+      
+      prospect_card = ProspectCard.create()
       expect {
         delete :destroy, {:id => prospect_card.to_param}, valid_session
       }.to change(ProspectCard, :count).by(-1)
