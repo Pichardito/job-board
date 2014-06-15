@@ -30,3 +30,11 @@ body {
 .error-container {
   color: red;
 }
+
+.liked-cards-list {
+  display: inline-block;
+}
+
+.liked-cards-list li {
+  text-align: left;
+}
