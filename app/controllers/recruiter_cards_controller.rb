@@ -3,7 +3,7 @@
 before_action :require_login
 
 def new
-  @recruiter_card = RecruiterCard.new
+  # @recruiter_card = RecruiterCard.new
 end
 
 def create
@@ -13,6 +13,7 @@ def create
 end
 
 def show
+  @recruiter_card = RecruiterCard.find(params[:id])
 end
 
 def edit
