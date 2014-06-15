@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root to: 'welcome#index'
 
-# # Cards
+# Cards
 
 resources :prospect_cards
 resources :recruiter_cards
@@ -18,11 +18,14 @@ resources :recruiter_cards
 
 # Sorcery Authentication
 
-
   get 'signup' => 'users#new', as: 'signup'
   post '/users' => 'users#create', as: 'users'
   delete '/users/:id' => 'users#destroy'
 
   resources :users, only: [:show, :edit, :update]
+
+  # Like Routes
+  post '/prospect_cards/:id/like' => 'prospect_cards#like', as: 'prospect_card_like'
+  post '/recruiter_cards/:id/like' => 'recruiter_cards#like', as: 'recruiter_card_like'
 
 end

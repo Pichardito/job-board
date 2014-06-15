@@ -2,7 +2,9 @@ class User < ActiveRecord::Base
   require 'digest/sha1'
   authenticates_with_sorcery!
   has_many :prospect_cards
+  has_many :prospect_card_likes
   has_many :recruiter_cards
+  has_many :recruiter_card_likes
 
   #COMMENTED OUT BECAUSE THEY CONFLICT WITH LINKEDIN OAUTH
 

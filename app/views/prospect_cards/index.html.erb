@@ -8,6 +8,9 @@
 
 <% @prospect_cards.each do |card| %>
 <div class="prospect-card">
+  <!-- Link to like the card -->
+  <%= link_to 'Like', prospect_card_like_path(card.id), method: :post %>
+  <!-- Link to like the card -->
   <p><%= card.name %></p>
   <p>Is a: <%= card.title %></p>
   <p>Looking for: <%= card.looking_for %></p>
@@ -21,6 +24,9 @@
 
 <% @recruiter_cards.each do |card| %>
 <div class="recruiter-card">
+  <!-- Link to like the card -->
+  <%= link_to 'Like', recruiter_card_like_path(card.id), method: :post %>
+  <!-- Link to like the card -->
   <p><%= card.name %></p>
   <p>Is a: <%= card.title %></p>
   <p>Looking for: <%= card.looking_for %></p>

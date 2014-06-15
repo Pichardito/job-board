@@ -16,6 +16,15 @@ def show
   @recruiter_card = RecruiterCard.find(params[:id])
 end
 
+  def like
+    recruiter_card = RecruiterCard.find(params[:id])
+    new_like = RecruiterCardLike.create({ :user_id => current_user.id, :recruiter_card_id => recruiter_card.id })
+    current_user.recruiter_card_likes << new_like
+    recruiter_card.recruiter_card_likes << new_like
+    binding.pry
+    redirect_to prospect_cards_path
+  end
+
 def edit
   @recruiter_card = RecruiterCard.find(params[:id])
 end
