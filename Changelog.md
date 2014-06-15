@@ -20,5 +20,10 @@ JobBoard Changelog
 * Users can login
 * Only Logged in users can see and create cards
 * Tests for prospect_cards_controller
+* Tests for all controllers and models!
+* Users can edit and delete only their own cards
+
+6/15/14 -
+
 
 

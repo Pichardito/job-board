@@ -22,7 +22,31 @@ describe UsersController do
         expected = '200'
         expect(actual).to eq(expected)
       end
-    end # Get show
+
+      it 'assigns @user' do
+        actual = assigns(:user)
+        expected = @bod
+        expect(actual).to eq(expected)
+      end
+
+      it 'renders the show template' do
+        expect(response).to render_template('show')
+      end
+    end # GET show
+
+    # EDIT
+    describe 'GET edit' do
+      before :each do
+        get :edit, :id => @bod.id
+      end
+
+      it 'responds successfully' do
+        actual = response.code
+        expected = '200'
+        expect(actual).to eq(expected)
+      end
+
+    end # GET edit
 
   end # Given a user
 
