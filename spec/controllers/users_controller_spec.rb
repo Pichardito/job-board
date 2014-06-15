@@ -78,11 +78,17 @@ describe UsersController do
         expect(actual).to eq(expected)
       end
 
-
-
-
-
+      it 'redirects to show' do
+        response.should redirect_to user_path(@bod)
+      end
     end # POST update
+
+    describe 'DELETE destroy' do
+      it 'deletes a user record' do
+        expect { delete :destroy, {:id => @bod.id}}
+          .to change(User, :count).by(-1)
+      end
+    end # DELETE destroy
 
   end # Given a user
 
