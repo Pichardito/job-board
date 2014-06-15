@@ -1,7 +1,9 @@
 <h1>It's the user show page!</h1>
 
 <%= link_to 'Edit Profile', edit_user_path(current_user.id) %> |
-<%= link_to 'View Job Board', prospect_cards_path %>
+<%= link_to 'View Job Board', prospect_cards_path %> |
+<%= link_to 'Sign out', logout_path, id: 'logout', method: :delete %>
+
 
 <div class="user-profile">
 <% if current_user.oauth_token %>
