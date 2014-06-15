@@ -10,4 +10,5 @@ describe RecruiterCard do
       expect(actual).to eq(expected)
     end
   end
+
 end #describe RecruiterCard
