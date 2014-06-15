@@ -5,9 +5,11 @@ describe UsersController do
   describe 'given a user' do
     before :each do
       @bod = User.new
-      @bod.name = 'Bod'
-      @bod.id = 1
+      @bod.first_name = 'Bod'
+      @bod.last_name = 'Bing'
+      @bod.email = 'bod@example.com'
       @bod.password = 'password'
+      @bod.id = 1
       @bod.save!
     end
 
@@ -37,7 +39,7 @@ describe UsersController do
     # EDIT
     describe 'GET edit' do
       before :each do
-        get :edit, :id => @bod.id
+        get :edit, id: @bod.id
       end
 
       it 'responds successfully' do
@@ -46,9 +48,45 @@ describe UsersController do
         expect(actual).to eq(expected)
       end
 
+      it 'assigns @user' do
+        actual = assigns(:user)
+        expected = @bod
+        expect(actual).to eq(expected)
+      end
+
+      it 'renders the edit template' do
+        expect(response).to render_template('edit')
+      end
     end # GET edit
 
+    # Update
+    describe 'POST update' do
+      before :each do
+        post :update, {:id => @bod.id, :user => {first_name: 'Lebron', last_name: 'James', email: 'lebron@example.com', password: 'password'}}
+      end
+
+      it 'responds with a redirect' do
+        actual = response.code
+        expected = '302'
+        expect(actual).to eq(expected)
+      end
+
+      it 'updates user record' do
+        @bod.reload
+        actual = @bod.first_name
+        expected = 'Lebron'
+        expect(actual).to eq(expected)
+      end
+
+
+
+
+
+    end # POST update
+
   end # Given a user
+
+
 
   # NEW
   describe 'GET new' do
@@ -56,7 +94,7 @@ describe UsersController do
       get :new
     end
 
-    it 'responds normally' do
+    it 'responds successfully' do
       actual = response.code
       expected = '200'
       expect(actual).to eq(expected)
