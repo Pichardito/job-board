@@ -134,5 +134,4 @@ describe UsersController do
     end
 
   end # POST create
-
 end # UserController
