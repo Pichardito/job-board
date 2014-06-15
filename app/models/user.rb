@@ -30,4 +30,9 @@ class User < ActiveRecord::Base
       user.save!
     end
   end
+
+  def test_to_s
+    "Hi my name is #{self.name} and my email is #{self.email}"
+  end
+
 end

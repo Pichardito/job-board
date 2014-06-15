@@ -1,5 +1,7 @@
 require 'spec_helper'
 
+# THESE ALL FAIL BECAUSE THERE IS NO CURRENT_USER SO IT THROWS A REDIRECT (302) TO THE LOGIN PAGE
+# TO PASS NEED TO COMMENT OUT THIS LINE IN CONTROLLER "before_action :require_login"
 describe RecruiterCardsController do
 
   describe 'given a recruiter_card' do
