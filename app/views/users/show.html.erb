@@ -25,7 +25,18 @@
 </div>
 
 <div class="liked-cards-list">
-  <!-- USE THIS SPACE TO LIST LIKES THE USER HAS RECEIVED -->
+  <ul> Prospect Cards You've Liked
+    <% @prospect_card_likes.each do |like| %>
+      <li><%= like.id %></li>
+      <li><%= like.prospect_card_id %></li>
+    <% end %>
+  </ul>
+  <ul> Recruiter Cards You've Liked
+    <% @recruiter_card_likes.each do |like| %>
+      <li><%= like.id %></li>
+      <li><%= like.recruiter_card_id %></li>
+    <% end %>
+  </ul>
 </div>
 
 <% current_user.prospect_cards.each do |card| %>

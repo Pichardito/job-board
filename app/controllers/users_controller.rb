@@ -11,6 +11,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @prospect_card_likes = @user.prospect_card_likes.all
+    @recruiter_card_likes = @user.recruiter_card_likes.all
   end
 
   def edit
