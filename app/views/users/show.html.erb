@@ -18,6 +18,10 @@
 <% end %>
 </div>
 
+<div class="liked-cards-list">
+  <!-- USE THIS SPACE TO LIST LIKES THE USER HAS RECEIVED -->
+</div>
+
 <% current_user.prospect_cards.each do |card| %>
 <div class="prospect-card">
   <p><%= card.name %></p>
