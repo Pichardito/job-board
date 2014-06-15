@@ -19,9 +19,7 @@ class UsersController < ApplicationController
 
   def update
     user = User.find(params[:id])
-    binding.pry
     user.update(user_params)
-    binding.pry
     redirect_to user_path(user)
   end
 
