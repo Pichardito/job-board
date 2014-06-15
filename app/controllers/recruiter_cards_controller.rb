@@ -3,7 +3,7 @@
 before_action :require_login
 
 def new
-  # @recruiter_card = RecruiterCard.new
+  @recruiter_card = RecruiterCard.new
 end
 
 def create

@@ -1,1 +1,45 @@
 <h1>It's the user show page!</h1>
+
+<%= link_to 'Edit Profile', edit_user_path(current_user.id) %> |
+<%= link_to 'View Job Board', prospect_cards_path %>
+
+<div class="user-profile">
+<% if current_user.oauth_token %>
+  <div class="linkedin-profile">
+    <img src="<%= current_user.linkedin_profile_img %>">
+    <h2><%= current_user.name %></h2>
+    <%= current_user.linkedin_email %>
+  </div>
+<% else %>
+  <div class="normal-user">
+    <h2><%= current_user.first_name %> <%= current_user.last_name %></h2>
+    <%= current_user.email %>
+  </div>
+<% end %>
+</div>
+
+<div class="liked-cards-list">
+  <!-- USE THIS SPACE TO LIST LIKES THE USER HAS RECEIVED -->
+</div>
+
+<% current_user.prospect_cards.each do |card| %>
+<div class="prospect-card">
+  <p><%= card.name %></p>
+  <p>Is a: <%= card.title %></p>
+  <p>Looking for: <%= card.looking_for %></p>
+  <p>Description: <%= card.description %></p>
+  <p><%= link_to 'Destroy', prospect_card_path(card.id), method: :delete %></p>
+  <p><%= link_to 'Edit', edit_prospect_card_path(card.id), method: :get %></p>
+</div>
+<% end %>
+
+<% current_user.recruiter_cards.each do |card| %>
+<div class="recruiter-card">
+  <p><%= card.name %></p>
+  <p>Is a: <%= card.title %></p>
+  <p>Looking for: <%= card.looking_for %></p>
+  <p>Description: <%= card.description %></p>
+  <p><%= link_to 'Destroy', recruiter_card_path(card.id), method: :delete %></p>
+  <p><%= link_to 'Edit', edit_recruiter_card_path(card.id), method: :get %></p>
+</div>
+<% end %>
