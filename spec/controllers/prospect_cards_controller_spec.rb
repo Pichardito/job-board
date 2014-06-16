@@ -118,18 +118,19 @@ describe ProspectCardsController do
     describe "DELETE destroy" do
 
     it "deletes prospect_card" do
-      expect { delete :destroy, {:id => prospect_card_test.id }}
+      expect { delete :destroy, {:id => @prospect_card_test.id }}
        .to change(ProspectCard, :count).by(-1)
     end
 
-    it "redirects to the prospect_cards list" do
-      expect(response).to redirect_to prospect_cards_path
-    end
+    # The test below is rendered obsolete by the ajax destroy, which should not redirect
+    # it "redirects to the prospect_cards list" do
+    #   expect(response).to redirect_to prospect_cards_path
+    # end
 
   end #DELETE
 end #Given a prospect card
 
-describe 'POST create' do
+      describe 'POST create' do
 
         before :each do
           post :create, {:prospect_card => { name: 'Carlos', title: 'manager', looking_for: 'employee', description: 'this' }}
@@ -140,15 +141,6 @@ describe 'POST create' do
           expected = '302'
           expect(actual).to eq(expected)
         end
-
     end #describe POST create
-
-
-
-
-end # Given a logged in user
-
-
-
-
+  end # Given a logged in user
 end # ProspectCardsController

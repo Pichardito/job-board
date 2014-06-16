@@ -20,7 +20,7 @@ resources :recruiter_cards
 
   get 'signup' => 'users#new', as: 'signup'
   post '/users' => 'users#create', as: 'users'
-  delete '/users/:id' => 'users#destroy'
+  delete '/users/:id' => 'users#destroy', as: 'destroy_user'
 
   resources :users, only: [:show, :edit, :update]
 
