@@ -23,7 +23,13 @@ before_action :require_login
 
   def like
     prospect_card = ProspectCard.find(params[:id])
-    new_like = ProspectCardLike.create({ :user_id => current_user.id, :prospect_card_id => prospect_card.id, :card_name => prospect_card.name, :card_details => prospect_card.description })
+    new_like = ProspectCardLike.create({  :user_id => current_user.id,
+                                          :prospect_card_id => prospect_card.id,
+                                          :card_details => prospect_card.looking_for,
+                                          :liker_first_name => current_user.first_name,
+                                          :liker_last_name => current_user.last_name,
+                                          :liker_email => current_user.email
+                                        })
     current_user.prospect_card_likes << new_like
     prospect_card.prospect_card_likes << new_like
     redirect_to prospect_cards_path
