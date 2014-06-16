@@ -130,7 +130,7 @@ describe UsersController do
     end
 
     it 'redirects to prospect_cards_path' do
-      response.should redirect_to login_path
+      response.should redirect_to prospect_cards_path
     end
 
   end # POST create
