@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   has_many :recruiter_card_likes
 
 validates :email, uniqueness: true, presence: true,  email: true
-validates :password, length: {within: 5..40, too_short: "Passwords must be 5 characters or longer", too_long: "That password is too long. Please try one under 25 characters."}
+validates :password, length: {within: 3..20, too_short: "Passwords must be 3 characters or longer", too_long: "That password is too long. Please try one under 25 characters."}
 
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
