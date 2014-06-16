@@ -16,7 +16,6 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 5 }
 
   def self.from_omniauth(auth)
-    binding.pry
     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
       user.provider = auth.provider
       user.uid = auth.uid

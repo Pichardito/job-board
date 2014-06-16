@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140616142747) do
+ActiveRecord::Schema.define(version: 20140616151330) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "prospect_card_likes", force: true do |t|
     t.integer  "user_id"
-    t.integer  "card_id"
+    t.integer  "prospect_card_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "card_name"
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20140616142747) do
 
   create_table "recruiter_card_likes", force: true do |t|
     t.integer  "user_id"
-    t.integer  "card_id"
+    t.integer  "recruiter_card_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "card_name"
