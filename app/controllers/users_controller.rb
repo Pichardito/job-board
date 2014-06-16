@@ -12,7 +12,6 @@ class UsersController < ApplicationController
     else
       redirect_to(:signup, notice: 'Sorry, but your account could not be created. Please try with a different email address or longer password.')
     end
-
   end
 
   def show
