@@ -7,6 +7,7 @@ describe ProspectCardsController do
     before :each do
       @lebron = User.new
       @lebron.name = 'Lebron'
+      @lebron.email = 'lebron@example.com'
       @lebron.password = 'password'
       @lebron.id = 6
       @lebron.save!
