@@ -1,10 +1,5 @@
 <h1>It's the user show page!</h1>
 
-<% if current_user.email %>
-  <%= link_to 'Edit Profile', edit_user_path(current_user.id) %> |
-<% else %>
-  <span style="background-color:pink;" ><%= link_to 'Add an Email to Your Profile!', edit_user_path(current_user.id) %></span>
-<% end %>
 <%= link_to 'View Job Board', prospect_cards_path %> |
 <%= link_to 'Sign out', logout_path, id: 'logout', method: :delete %> |
 <!--<%= link_to 'Delete your account', destroy_user_path(current_user), :method=>'delete', :confirm=>'You sure?'%> -->
