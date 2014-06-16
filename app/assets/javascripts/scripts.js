@@ -1,5 +1,6 @@
 $(function(){
-  $('.job-card').draggable();
+  $('.prospect-card').draggable();
+  $('.recruiter-card').draggable();
 
   $('.delete-pcard').on("click", function(e){
 
