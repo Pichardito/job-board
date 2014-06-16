@@ -35,4 +35,26 @@ validates :password, :presence => true,
     "Hi my name is #{self.name} and my email is #{self.email}"
   end
 
+   def get_ids(card_array)
+    id_array = []
+      card_array.each do |card|
+        id_array << card.id
+      end
+    return id_array
+  end
+
+  def get_card_likes(card_id_array, type)
+    liked_card_array = []
+    if type == 'prospect'
+      card_id_array.each do |card_id|
+        liked_card_array << ProspectCardLike.where(prospect_card_id: card_id)
+      end
+    else
+      card_id_array.each do |card_id|
+        liked_card_array << RecruiterCardLike.where(recruiter_card_id: card_id)
+      end
+    end
+      return liked_card_array
+  end
+
 end
