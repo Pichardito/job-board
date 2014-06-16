@@ -18,6 +18,7 @@ before_action :require_login
   end
 
   def show
+    @prospect_card = ProspectCard.find(params[:id])
   end
 
   def like

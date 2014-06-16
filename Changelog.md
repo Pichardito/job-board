@@ -24,6 +24,16 @@ JobBoard Changelog
 * Users can edit and delete only their own cards
 
 6/15/14 -
+* Develop Like join model
+* Users can like cards
+
+6/16/14 -
+* Validations and exception handling for signup
+* View logic changes
+* Prospect_Card controller tests completed
+* 46 tests, 2 failing due to incomplete and ongoing AJAX implementation
+* Git merge issues resolved
+
 
 
 
