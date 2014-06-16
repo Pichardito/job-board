@@ -5,12 +5,15 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(user_params)
-    if @user.save!
-      session[:user_id] = @user.id
-      redirect_to user_path(@user.id)
-    else
-      redirect_to(:signup, notice: 'Sorry, but your account could not be created. Please try with a different email address or longer password.')
+    begin
+      @user = User.create(user_params)
+      if @user.save!
+        session[:user_id] = @user.id
+        redirect_to prospect_cards_path
+      else
+      end
+    rescue ActiveRecord::RecordInvalid => invalid
+        render 'new'
     end
   end
 
