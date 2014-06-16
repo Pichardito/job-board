@@ -118,13 +118,14 @@ describe ProspectCardsController do
     describe "DELETE destroy" do
 
     it "deletes prospect_card" do
-      expect { delete :destroy, {:id => prospect_card_test.id }}
+      expect { delete :destroy, {:id => @prospect_card_test.id }}
        .to change(ProspectCard, :count).by(-1)
     end
 
-    it "redirects to the prospect_cards list" do
-      expect(response).to redirect_to prospect_cards_path
-    end
+    # The test below is rendered obsolete by the ajax destroy, which should not redirect
+    # it "redirects to the prospect_cards list" do
+    #   expect(response).to redirect_to prospect_cards_path
+    # end
 
   end #DELETE
 end #Given a prospect card
