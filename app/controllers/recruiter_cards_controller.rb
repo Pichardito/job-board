@@ -18,7 +18,7 @@ end
 
   def like
     recruiter_card = RecruiterCard.find(params[:id])
-    new_like = RecruiterCardLike.create({ :user_id => current_user.id, :card_id => recruiter_card.id })
+    new_like = RecruiterCardLike.create({ :user_id => current_user.id, :card_id => recruiter_card.id, :like_description => recruiter_cards_card.description })
     current_user.recruiter_card_likes << new_like
     recruiter_card.recruiter_card_likes << new_like
     redirect_to prospect_cards_path
