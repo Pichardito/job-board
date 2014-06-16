@@ -22,11 +22,13 @@ validates :password, :presence => true,
       user.oauth_expires_at = Time.now + auth.extra.access_token.params[:oauth_expires_in].to_i
       user.linkedin_email = auth.info['email']
       user.linkedin_profile_img = auth.info['image']
-      #POSSIBLE DUMMY VARIABLES TO FORCE PASS VALIDATION
-      #PLACEHOLDER PASSWORD TO PASS VALIDATIONS
-      rand_string = (0...8).map { (65 + rand(26)).chr }.join
-      user.password = Digest::SHA1.hexdigest rand_string
       user.email = auth.info['email']
+      rand_string = (0...8).map { (65 + rand(26)).chr }.join #VARIABLE USED TO GENERATE RANDOME PASSWORD
+      user.password = Digest::SHA1.hexdigest rand_string
+      binding.pry
+      #user.salt = ?? SORCERY HANDLES AUTOMATICALLY PERHAPS
+      user.first_name = auth.info.name.split(' ')[0]
+      user.last_name = auth.info.name.split(' ')[1]
       user.save!
     end
   end
