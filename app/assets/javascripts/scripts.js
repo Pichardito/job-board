@@ -6,10 +6,12 @@ $(function(){
 
     // $(this).parents('.prospect-card').remove()
     e.preventDefault();
-
+    
     var that = this;
     var cardId = $(this).parents('.prospect-card').data('id');
+  
       $.ajax({
+    
       url: '/prospect_cards/'+ cardId,
         method: 'delete',
         dataType: 'json',

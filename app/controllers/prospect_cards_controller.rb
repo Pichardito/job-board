@@ -41,7 +41,7 @@ before_action :require_login
   def destroy
     prospect_card = ProspectCard.find(params[:id])
     prospect_card.destroy
-    redirect_to prospect_cards_path
+    render json: {}
   end
 
   private
