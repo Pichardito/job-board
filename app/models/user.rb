@@ -1,19 +1,14 @@
 class User < ActiveRecord::Base
   require 'digest/sha1'
+  include ActiveModel::Validations
   authenticates_with_sorcery!
   has_many :prospect_cards
   has_many :prospect_card_likes
   has_many :recruiter_cards
   has_many :recruiter_card_likes
 
-  #COMMENTED OUT BECAUSE THEY CONFLICT WITH LINKEDIN OAUTH
-
-  # validates_presence_of :password, on: :create
-  # validates_presence_of :email, on: :create
-  # validates_uniqueness_of :email
-
-  validates :email, uniqueness: true
-  validates :password, length: { minimum: 5 }
+validates :email, uniqueness: true, presence: true, email: true
+validates :password, length: {within: 5..25, too_short: "Passwords must be 5 characters or longer", too_long: "That password is too long. Please try one under 25 characters."}
 
   def self.from_omniauth(auth)
     binding.pry
