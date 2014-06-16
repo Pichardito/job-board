@@ -130,7 +130,7 @@ describe ProspectCardsController do
   end #DELETE
 end #Given a prospect card
 
-describe 'POST create' do
+      describe 'POST create' do
 
         before :each do
           post :create, {:prospect_card => { name: 'Carlos', title: 'manager', looking_for: 'employee', description: 'this' }}
@@ -141,15 +141,6 @@ describe 'POST create' do
           expected = '302'
           expect(actual).to eq(expected)
         end
-
     end #describe POST create
-
-
-
-
-end # Given a logged in user
-
-
-
-
+  end # Given a logged in user
 end # ProspectCardsController
