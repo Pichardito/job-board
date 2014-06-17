@@ -1,11 +1,10 @@
 <%= form_for @prospect_card do |f| %>
   <%= f.hidden_field :name, :value => current_user.first_name + " " + current_user.last_name %>
   <%= f.hidden_field :user_img, :value => current_user.linkedin_profile_img %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-  <%= f.label :looking_for %>
+  <%= f.text_field :title %></br>
+  <p>LOOKING FOR A...</p>
   <%= f.text_field :looking_for %>
-  <%= f.label :description %>
+  <p>SO I CAN HELP...</p>
   <%= f.text_field :description %>
   <br>
   <%= f.submit 'Post this card'%>
