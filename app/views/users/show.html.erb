@@ -41,12 +41,12 @@
 <h2>Your cards:</h2>
 
 <% current_user.prospect_cards.each do |card| %>
-<div class="prospect-card">
+<div class="prospect-card" data-id=<%= card.id %>>
   <p><%= card.name %></p>
   <p>Is a: <%= card.title %></p>
   <p>Looking for: <%= card.looking_for %></p>
   <p>Description: <%= card.description %></p>
-  <p><%= link_to 'Destroy', prospect_card_path(card.id), method: :delete %></p>
+  <p><%= link_to 'Destroy', "/prospect_cards/#{card.id}", class: "delete-pcard", method: :delete %></p>
   <p><%= link_to 'Edit', edit_prospect_card_path(card.id), method: :get %></p>
 </div>
 <% end %>
