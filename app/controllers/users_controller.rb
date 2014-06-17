@@ -24,12 +24,12 @@ class UsersController < ApplicationController
 
     #GETTING LIKES ASSOCIATED WITH USERS CARDS
     #THESE GET ALL THE USERS PROSPECT AND RECRUITER CARDS
-    all_prospect_cards = @user.prospect_cards.all
-    all_recruiter_cards = @user.recruiter_cards.all
+    @prospect_cards = @user.prospect_cards.all
+    @recruiter_cards = @user.recruiter_cards.all
 
     #THESE RETURN AN ARRAY OF THE CARD IDS BASED ON THE CARDS FOUND ABOVE
-    all_prospect_card_ids = @user.get_ids(all_prospect_cards)
-    all_recruiter_card_ids = @user.get_ids(all_recruiter_cards)
+    all_prospect_card_ids = @user.get_ids(@prospect_cards)
+    all_recruiter_card_ids = @user.get_ids(@recruiter_cards)
 
     #THESE RETURN AN ARRAY OF THE LIKES ASSOCIATED WITH THE CARDS ABOVE
     @prospect_card_likes = @user.get_card_likes(all_prospect_card_ids, 'prospect')
