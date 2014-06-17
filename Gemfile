@@ -39,3 +39,4 @@ gem 'linkedin'
 gem 'sorcery'
 gem 'jquery-ui-rails'
 gem 'twitter-bootstrap-rails'
+

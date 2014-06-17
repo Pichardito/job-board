@@ -69,4 +69,13 @@ $(function(){
     return false;
 
   })
+
+  $(".card-text").editInPlace({
+        url: "/prospect_cards" ,
+        callback: function(unused, enteredText) {
+            return enteredText;
+        },
+        show_buttons: true
+    });
+
 })

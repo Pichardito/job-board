@@ -42,7 +42,7 @@ before_action :require_login
   def update
     prospect_card = ProspectCard.find(params[:id])
     prospect_card.update(prospect_card_params)
-    redirect_to prospect_cards_path
+    render json: {}
   end
 
   def destroy
