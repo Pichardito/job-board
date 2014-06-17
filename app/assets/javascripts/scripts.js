@@ -51,17 +51,18 @@ $(function(){
     // $(this).parents('.prospect-card').remove()
     e.preventDefault();
 
+    var target = e.target;
     var that = this;
     var cardId = $(this).parents('.prospect-card').data('id');
 
       $.ajax({
 
-      url: '/prospect_cards/'+ cardId,
-        method: 'delete',
+      url: '/prospect_cards/'+ cardId + '/like',
+        method: 'post',
         dataType: 'json',
-        data: {recruiter_card: this.recruiter_card},
+        data: {prospect_card: this.prospect_card},
         success: function(data){
-        $(that).parents('.prospect-card').remove()
+        $(target).html('Liked');
         }
     })
 
