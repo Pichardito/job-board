@@ -1,4 +1,4 @@
-<div id="user_nav">
+<div id="user-login-nav">
 
   <% if current_user %>
     <% if current_user.uid %>
@@ -13,7 +13,7 @@
     <%= link_to 'View Job Board', prospect_cards_path, method: :get %>
 
   <% else %>
-    <%= link_to 'Login', login_path %>
+    <%= link_to 'Login', login_path %>  |
     <%= link_to 'Sign up', signup_path %>
   <% end %>
 </div>
