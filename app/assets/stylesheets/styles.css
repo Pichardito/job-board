@@ -84,3 +84,7 @@ body {
   margin-left: 8px;
   display: inline-block;
 }
+
+.errors {
+  color: red;
+}
