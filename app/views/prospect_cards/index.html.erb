@@ -27,7 +27,7 @@
       <%= link_to 'Delete', "/prospect_cards/#{card.id}", class: "delete-pcard btn btn-danger", method: :delete %>
       <%= link_to 'Edit', edit_prospect_card_path(card.id), class: "edit-pcard btn btn-success", method: :get %>
     <% else %>
-      <%= link_to 'Like', prospect_card_like_path(card.id), method: :post %>
+      <%= link_to 'Like', prospect_card_like_path(card.id), class: "like-pcard", method: :post %>
     <% end %>
   </div>
 </div>
@@ -55,7 +55,7 @@
       <%= link_to 'Delete', "/recruiter_cards/#{card.id}", class: "delete-rcard btn btn-danger", method: :delete %>
       <%= link_to 'Edit', edit_recruiter_card_path(card.id), class: "edit-rcard btn btn-success", method: :get %>
     <% else %>
-      <%= link_to 'Like', recruiter_card_like_path(card.id), method: :post %>
+      <%= link_to 'Like', recruiter_card_like_path(card.id), "like-rcard", method: :post %>
     <% end %>
   </div>
 </div>
