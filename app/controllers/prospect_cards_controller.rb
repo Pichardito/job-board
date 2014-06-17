@@ -32,7 +32,7 @@ before_action :require_login
                                         })
     current_user.prospect_card_likes << new_like
     prospect_card.prospect_card_likes << new_like
-    redirect_to prospect_cards_path
+    render json: {}
   end
 
   def edit
