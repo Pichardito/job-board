@@ -1,10 +1,8 @@
 <div class="main-board-container">
 <h1>General Assembly Search Engine</h1>
-
 <p>
   <%= link_to "Create a New Prospect Card", new_prospect_card_path %> |
-  <%= link_to 'Create a New Recruiter Card', new_recruiter_card_path %> |
-  <%= link_to 'View my Profile', user_path(current_user.id) %>
+  <%= link_to 'Create a New Recruiter Card', new_recruiter_card_path %>
 </p>
 
 <% @prospect_cards.each do |card| %>

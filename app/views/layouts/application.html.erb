@@ -13,18 +13,19 @@
       <% if current_user.uid %>
         <div class="linkedin-profile">
           <img src="<%= current_user.linkedin_profile_img %>">
-          <p>Signed in as <%= current_user.name %></p>
-            <p>(<%= current_user.linkedin_email %>)</p>
+          <div>Signed in as <strong><%= current_user.name %></strong></br>
+          (<%= current_user.linkedin_email %>)</div>
         </div>
       <% else %>
         <div class="normal-profile">
           <img src="/assets/profile_image.jpg">
-          <p>Signed in as <strong><%= current_user.first_name %> <%= current_user.last_name %></strong></p>
-          <p>(<%= current_user.email %>)</p>
+          <div>Signed in as <strong><%= current_user.first_name %> <%= current_user.last_name %></strong></br>
+          (<%= current_user.email %>)</div>
         </div>
-      <% end %>
+      <% end %></br></br>
       <%= link_to 'Sign out', logout_path, id: 'logout', method: :delete %> |
-      <%= link_to 'Edit Profile', edit_user_path(current_user.id) %>
+      <%= link_to 'Edit Profile', edit_user_path(current_user.id) %> |
+      <%= link_to 'See opportunities', user_path(current_user.id) %>
     </div>
   <% end %>
 

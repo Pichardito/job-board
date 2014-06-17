@@ -3,12 +3,23 @@
   margin: 1em;
 }
 
-#main-banner {
+.main-banner {
   margin-top: 2em;
   font-size: 4em;
+  color: lightgrey;
+}
+
+.likes-received-container {
+  display: inline-block;
+}
+
+.view-board-button {
+  margin: 10px;
+  font-size: 3em;
 }
 
 .prospect-card {
+  color: black;
   background-color: lightyellow;
   border: 1px solid black;
   display: inline-block;
@@ -19,6 +30,7 @@
 }
 
 .recruiter-card {
+  color: black;
   background-color: pink;
   border: 1px solid black;
   display: inline-block;
@@ -38,9 +50,8 @@ form {
 }
 
 body {
-  font-family: "PFDinTextCompProBold",Impact;
   text-align: center;
-  color: lightgrey;
+  color: white;
   background-image: url(/assets/black_paper_@2X.png);
 }
 
@@ -49,14 +60,14 @@ body {
 }
 
 .profile-nav {
+  color: black;
   margin: 10px;
   display: inline-block;
   padding: 10px;
   border: 2px solid white;
-  border-radius: 15%;
   text-align: left;
   background-color: white;
-  box-shadow: 10px 10px 5px lightgrey;
+  box-shadow: 10px 10px 5px grey;
   left: 10px;
   position: fixed;
   z-index: 2;
@@ -66,4 +77,10 @@ body {
   height: 80px;
   width: 80px;
   border-radius: 15%;
+  display: inline-block;
+}
+
+.profile-nav div {
+  margin-left: 8px;
+  display: inline-block;
 }

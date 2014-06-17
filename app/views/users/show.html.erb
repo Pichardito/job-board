@@ -1,7 +1,7 @@
-<h1>It's the user show page!</h1>
 
-<%= link_to 'View Job Board', prospect_cards_path %> |
-<%= link_to 'Sign out', logout_path, id: 'logout', method: :delete %> |
+<div class="view-board-button">
+  <%= link_to 'Back To Job Board', prospect_cards_path %>
+</div>
 <!--<%= link_to 'Delete your account', destroy_user_path(current_user), :method=>'delete', :confirm=>'You sure?'%> -->
 
 <div class="user-profile">
@@ -19,19 +19,23 @@
 <% end %>
 </div>
 
-<div class="likes-received-list">
+<div class="likes-received-container">
+  <div class="boss-list">
+  <h2>Potential Bosses</h2>
   <ul>
-    <li><h2>Potential Coworkers or Bosses</h2><li>
   <% @prospect_card_likes.each do |liked_card| %>
     <li><%= liked_card.liker_first_name %> <%= liked_card.liker_last_name %> (<%= liked_card.liker_email %>) liked your card looking for: <%= liked_card.card_details %></li>
   <% end %>
   </ul>
+  </div>
+  <div class="employee-list">
+  <h2>Potential Employees</h2>
   <ul>
-    <li><h2>Potential Employees or Partners</h2><li>
   <% @recruiter_card_likes.each do |liked_card| %>
     <li><%= liked_card.liker_first_name %> <%= liked_card.liker_last_name %> (<%= liked_card.liker_email %>) liked your card looking for: <%= liked_card.card_details %></li>
   <% end %>
   </ul>
+  </div>
 </div>
 
 <h2>Your cards:</h2>
