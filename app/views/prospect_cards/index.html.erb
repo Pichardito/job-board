@@ -21,7 +21,7 @@
       <p>SO I CAN HELP...</p>
     <div class="card-text">
       <%= card.description %>
-    </div>
+    </div></br>
   <div class="card-buttons">
     <% if card.user_id == current_user.id %>
       <%= link_to 'Delete', "/prospect_cards/#{card.id}", class: "delete-pcard btn btn-danger", method: :delete %>

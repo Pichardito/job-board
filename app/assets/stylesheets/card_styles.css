@@ -1,5 +1,6 @@
 .card-buttons button {
   display: inline-block;
+  margin-top: 15px;
 }
 
 /*  PROSPECT CARD STYLES  */
@@ -15,6 +16,10 @@
   text-align: left;
   font-size: 3em;
   font-weight: bold;
+}
+
+.prospect-card p {
+  margin: 10px 0 10px 0;
 }
 
 .prospect-card .card-header {
@@ -47,10 +52,9 @@
 .prospect-card .card-text {
   text-align: left;
   background-color : #F7F778;
-  width: 95%;
   height: 80px;
-  font-size: 1em;
-  margin: 10px;
+  font-size: 30px;
+  padding: 10px;
 }
 
 /*  RECRUITER CARD STYLES  */
