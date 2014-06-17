@@ -8,7 +8,7 @@
       <p>Signed in as <%= current_user.first_name %> <%= current_user.last_name %>: <%= current_user.email %></p>
     <% end %>
 
-    <%= link_to 'Sign out', logout_path, id: 'logout', method: :delete %></br>
+    <!--<%= link_to 'Sign out', logout_path, id: 'logout', method: :delete %></br>-->
     <%= link_to 'Create a Card', new_prospect_card_path, method: :get %></br>
     <%= link_to 'View Job Board', prospect_cards_path, method: :get %>
 

@@ -14,3 +14,5 @@
 <% end %>
 
 <%= render 'form', submit: 'Update' %>
+
+<%= button_to('Delete Account', destroy_user_path(@user.id), method: 'delete', class: "btn btn-primary delete-user", data: { confirm: "Are you sure you want to delete your account?" })  %>

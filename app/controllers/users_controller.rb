@@ -58,7 +58,11 @@ class UsersController < ApplicationController
 
   def destroy
     User.delete(params[:id])
-    render json: {}
+    session[:user_id] = nil
+
+    # Is this render appropriate?
+    #render json: {}
+    redirect_to root_path
   end
 
   private
