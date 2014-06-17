@@ -12,6 +12,15 @@ $(function(){
     };
   });
 
+  var cardTexts = $('.card-text');
+
+  $.each(cardTexts, function(idx, textEl){
+    while ( $(textEl).height() > 100 ) {
+      var fontSize = parseInt($(textEl).css('font-size'));
+      fontSize = fontSize - 5;
+      $(textEl).css('font-size', fontSize);
+    };
+  });
 
   $('.delete-pcard').on("click", function(e){
 
