@@ -1,6 +1,6 @@
 <%= form_for @prospect_card do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+  <%= f.hidden_field :name, :value => current_user.first_name + " " + current_user.last_name %>
+  <%= f.hidden_field :user_img, :value => current_user.linkedin_profile_img %>
   <%= f.label :title %>
   <%= f.text_field :title %>
   <%= f.label :looking_for %>

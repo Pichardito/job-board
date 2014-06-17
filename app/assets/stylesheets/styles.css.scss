@@ -30,7 +30,7 @@ form {
 body {
   text-align: center;
   color: white;
-  background-image: url(/assets/black_paper_@2X.png);
+  background-image: asset-url("black_paper_@2X.png");
 }
 
 .error-container {
