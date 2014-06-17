@@ -1,3 +1,7 @@
+.is-a {
+  display: inline-block;
+}
+
 .card-buttons button {
   display: inline-block;
   margin-top: 15px;
