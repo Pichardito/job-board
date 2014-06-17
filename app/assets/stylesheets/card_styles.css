@@ -18,6 +18,11 @@
   font-weight: bold;
 }
 
+.prospect-card img {
+  height: 80px;
+  width: 80px;
+}
+
 .prospect-card p {
   margin: 10px 0 10px 0;
 }
@@ -72,6 +77,11 @@
   text-align: left;
   font-size: 3em;
   font-weight: bold;
+}
+
+.recruiter-card img {
+  height: 80px;
+  width: 80px;
 }
 
 .recruiter-card p {
