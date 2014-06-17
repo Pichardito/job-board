@@ -1,3 +1,10 @@
+.card-buttons button {
+  display: inline-block;
+  margin-top: 15px;
+}
+
+/*  PROSPECT CARD STYLES  */
+
 .prospect-card {
   color: black;
   background-color: white;
@@ -11,7 +18,11 @@
   font-weight: bold;
 }
 
-.card-header {
+.prospect-card p {
+  margin: 10px 0 10px 0;
+}
+
+.prospect-card .card-header {
   background-color: #F7F778;
   padding: 10px;
   display: inline-block;
@@ -38,12 +49,54 @@
   background-color: yellow;
 }
 
+.prospect-card .card-text {
+  text-align: left;
+  background-color : #F7F778;
+  height: 80px;
+  overflow: hidden;
+  font-size: 30px;
+  padding: 10px;
+  line-height: 25px;
+}
+
+/*  RECRUITER CARD STYLES  */
+
 .recruiter-card {
   color: black;
   background-color: white;
-  border: 1px solid black;
   display: inline-block;
   padding: 10px;
   margin: 5px;
-  width: 350px;
+  min-width: 350px;
+  max-width: 400px;
+  text-align: left;
+  font-size: 3em;
+  font-weight: bold;
+}
+
+.recruiter-card .card-header {
+  background-color: pink;
+  padding: 10px;
+  display: inline-block;
+  margin: 0 15px 10px 0;
+}
+
+.recruiter-card form {
+  text-align: left;
+  margin: 0;
+}
+
+.recruiter-card input[type=text] {
+  text-align: left;
+  background-color: pink;
+  border: none;
+  border-radius: 0;
+  width: 95%;
+  outline:0;
+  height: 80px;
+  font-size: 1em;
+}
+
+.recruiter-card input[type=text]:hover {
+  background-color: red;
 }
