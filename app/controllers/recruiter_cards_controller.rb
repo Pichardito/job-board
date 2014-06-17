@@ -43,7 +43,7 @@ end
 def destroy
   recruiter_card = RecruiterCard.find(params[:id])
   recruiter_card.destroy
-  redirect_to prospect_cards_path
+  render json: {}
 end
 
 private

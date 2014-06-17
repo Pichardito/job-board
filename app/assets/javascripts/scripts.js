@@ -15,7 +15,7 @@ $(function(){
       url: '/prospect_cards/'+ cardId,
         method: 'delete',
         dataType: 'json',
-        data: {prospect_card: this.prospect_card},
+        data: {recruiter_card: this.recruiter_card},
         success: function(data){
         $(that).parents('.prospect-card').remove()
         }

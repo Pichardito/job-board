@@ -18,28 +18,6 @@
   font-size: 3em;
 }
 
-.prospect-card {
-  color: black;
-  background-color: lightyellow;
-  border: 1px solid black;
-  display: inline-block;
-  padding: 10px;
-  margin: 5px;
-  width: 200px;
-  height: 200px;
-}
-
-.recruiter-card {
-  color: black;
-  background-color: pink;
-  border: 1px solid black;
-  display: inline-block;
-  padding: 10px;
-  margin: 5px;
-  width: 200px;
-  height: 200px;
-}
-
 .main-board-container {
   width: 200em;
   height: 200em;
