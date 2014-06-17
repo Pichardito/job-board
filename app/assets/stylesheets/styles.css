@@ -23,8 +23,11 @@ form {
 }
 
 body {
+  font-family: "PFDinTextCompProBold",Impact,Arial;
   text-align: center;
   background-color: aliceblue;
+  width: 200em;
+  height: 200em;
 }
 
 .error-container {
