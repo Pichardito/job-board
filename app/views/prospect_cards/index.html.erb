@@ -8,7 +8,7 @@
 <% @prospect_cards.each do |card| %>
 <div class="prospect-card" data-id=<%= card.id %>>
   <!-- Link to like the card -->
-  <%= link_to 'Like', "/prospect_cards/#{card.id}/like", class: "like-pcard", method: :post %>
+  <%= link_to 'Like', prospect_card_like_path(card.id), method: :post %>
   <!-- Link to like the card -->
   <p><%= card.name %></p>
   <p>Is a: <%= card.title %></p>
@@ -37,3 +37,10 @@
 </div>
 <% end %>
 </div>
+
+
+
+
+
+
+

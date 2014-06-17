@@ -1,3 +1,16 @@
 <h2>Edit your account</h2>
 
+<% if @user.errors.any? %>
+  <div class="errors">
+    <p class="error-count">
+      The form has <%= pluralize(@user.errors.count, "error") %>.
+    </p>
+    <ul class= "error-list">
+    <% @user.errors.full_messages.each do |msg| %>
+      <p><%= msg %></p>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= render 'form', submit: 'Update' %>

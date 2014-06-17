@@ -44,9 +44,16 @@ class UsersController < ApplicationController
   end
 
   def update
-    user = User.find(params[:id])
-    user.update(user_params)
-    redirect_to user_path(user)
+    @user = User.find(params[:id])
+    begin
+      @user.update(user_params)
+      if @user.save!
+      redirect_to user_path(@user)
+    else
+    end
+    rescue ActiveRecord::RecordInvalid => invalid
+      render 'edit'
+    end
   end
 
   def destroy
