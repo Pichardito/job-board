@@ -14,16 +14,13 @@ class SessionsController < ApplicationController
       @user = login(params[:email], params[:password])
       if @user
         session[:user_id] = @user.id
-        binding.pry
         redirect_to prospect_cards_path
       else
         if User.find_by(email: params[:email])
           flash[:notice] = "Incorrect email/password combination"
-          binding.pry
           render 'new'
         else
           flash[:notice] = "No account found with that email address, please try again"
-          binding.pry
           render 'new'
         end
       end
