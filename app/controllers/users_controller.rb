@@ -51,7 +51,7 @@ class UsersController < ApplicationController
 
   def destroy
     User.delete(params[:id])
-    redirect_to root_path
+    render json: {}
   end
 
   private
