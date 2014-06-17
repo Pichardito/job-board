@@ -1,3 +1,15 @@
-<h2>Edit This Prospect Card</h2>
+<h2>Edit This Card</h2>
 
+<div class="prospect-card">
+  <% if current_user.uid %>
+    <div class="card-header"><img src="<%= current_user.linkedin_profile_img %>">
+    <strong><%= current_user.name %></strong>
+  </div>IS A
+  <% else %>
+  <div class="normal-profile">
+    <div class="card-header"><img src="/assets/profile_image.jpg">
+    <strong><%= current_user.first_name %> <%= current_user.last_name %></strong></br>
+    </div>
+  <% end %>
 <%= render 'form' %>
+</div>

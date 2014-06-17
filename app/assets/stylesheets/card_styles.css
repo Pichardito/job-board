@@ -1,3 +1,7 @@
+.is-a {
+  display: inline-block;
+}
+
 .card-buttons button {
   display: inline-block;
   margin-top: 15px;
@@ -16,6 +20,11 @@
   text-align: left;
   font-size: 3em;
   font-weight: bold;
+}
+
+.prospect-card img {
+  height: 80px;
+  width: 80px;
 }
 
 .prospect-card p {
@@ -56,7 +65,7 @@
   overflow: hidden;
   font-size: 30px;
   padding: 10px;
-  line-height: 25px;
+  line-height: 30px;
 }
 
 /*  RECRUITER CARD STYLES  */
@@ -72,6 +81,15 @@
   text-align: left;
   font-size: 3em;
   font-weight: bold;
+}
+
+.recruiter-card img {
+  height: 80px;
+  width: 80px;
+}
+
+.recruiter-card p {
+  margin: 10px 0 10px 0;
 }
 
 .recruiter-card .card-header {
@@ -99,4 +117,14 @@
 
 .recruiter-card input[type=text]:hover {
   background-color: red;
+}
+
+.recruiter-card .card-text {
+  text-align: left;
+  background-color: pink;
+  height: 80px;
+  overflow: hidden;
+  font-size: 30px;
+  padding: 10px;
+  line-height: 30px;
 }

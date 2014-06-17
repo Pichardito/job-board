@@ -1,5 +1,5 @@
 #user-login-nav {
-  font-size: 2em;
+  font-size: 1em;
   margin: 1em;
 }
 
@@ -64,5 +64,14 @@ body {
 }
 
 .errors {
+  color: red;
+}
+
+.delete-user {
+  margin-top: 150px;
+
+}
+
+.delete-user:hover {
   color: red;
 }

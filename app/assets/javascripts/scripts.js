@@ -2,6 +2,17 @@ $(function(){
   $('.prospect-card').draggable();
   $('.recruiter-card').draggable();
 
+  var headers = $('.card-header');
+
+  $.each(headers, function(idx, headerEl){
+    while ( $(headerEl).width() > 250 ) {
+      var fontSize = parseInt($(headerEl).css('font-size'));
+      fontSize = fontSize - 5;
+      $(headerEl).css('font-size', fontSize);
+    };
+  });
+
+
   $('.delete-pcard').on("click", function(e){
 
     // $(this).parents('.prospect-card').remove()
@@ -70,6 +81,7 @@ $(function(){
 
   })
 
+
   $(".card-text").editInPlace({
         url: "/prospect_cards" ,
         callback: function(unused, enteredText) {
@@ -77,5 +89,5 @@ $(function(){
         },
         show_buttons: true
     });
+});
 
-})

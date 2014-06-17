@@ -1,3 +1,4 @@
+<p class="is-a">IS A</p>
 <%= form_for @recruiter_card do |f| %>
   <%= f.hidden_field :name, :value => current_user.first_name + " " + current_user.last_name %>
   <%= f.hidden_field :user_img, :value => current_user.linkedin_profile_img %>

@@ -49,7 +49,7 @@ end
 private
 
 def recruiter_card_params
-  params.require(:recruiter_card).permit(:name, :title, :looking_for, :description)
+  params.require(:recruiter_card).permit(:name, :title, :looking_for, :description, :user_img)
 end
 
 end
