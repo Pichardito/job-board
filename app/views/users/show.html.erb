@@ -52,12 +52,11 @@
 <% end %>
 
 <% current_user.recruiter_cards.each do |card| %>
-<div class="recruiter-card">
+<div class="recruiter-card" data-id=<%= card.id %>>
   <p><%= card.name %></p>
   <p>Is a: <%= card.title %></p>
   <p>Looking for: <%= card.looking_for %></p>
   <p>Description: <%= card.description %></p>
-  <p><%= link_to 'Destroy', recruiter_card_path(card.id), method: :delete %></p>
-  <p><%= link_to 'Edit', edit_recruiter_card_path(card.id), method: :get %></p>
+  <p><%= link_to 'Destroy', "/recruiter_cards/#{card.id}", class: "delete-rcard", method: :delete %></p>  <p><%= link_to 'Edit', edit_recruiter_card_path(card.id), method: :get %></p>
 </div>
 <% end %>
