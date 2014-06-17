@@ -1,7 +1,6 @@
-<h2>Create a New Prospect Card</h2>
+<h2>I'm Offering My Services</h2>
 
 <div class="prospect-card">
-<div class="card-owner">
   <% if current_user.uid %>
     <div class="card-header"><img src="<%= current_user.linkedin_profile_img %>">
     <strong><%= current_user.name %></strong>
@@ -11,7 +10,6 @@
     <div class="card-header"><img src="/assets/profile_image.jpg">
     <strong><%= current_user.first_name %> <%= current_user.last_name %></strong></br>
     </div>
-  </div>
   <% end %>
 <%= render 'form' %>
 </div>
