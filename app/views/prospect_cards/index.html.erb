@@ -6,7 +6,8 @@
 </p>
 
 <% @prospect_cards.each do |card| %>
-<div class="prospect-card" data-id=<%= card.id %>>
+<div class="card-pos" style="position: relative; left:<%= card.left_pos %>px; top: <%= card.top_pos %>px;">
+<div class="prospect-card" data-id='<%= card.id %>' >
     <div class="card-header">
       <img src="<%= card.user_img %>">
       <strong><%= card.name %></strong>
@@ -31,10 +32,12 @@
     <% end %>
   </div>
 </div>
+</div>
 <% end %>
 
 <% @recruiter_cards.each do |card| %>
-<div class="recruiter-card" data-id=<%= card.id %>>
+<div class="card-pos" style="position: relative; left:<%= card.left_pos %>px; top: <%= card.top_pos %>px;">
+<div class="recruiter-card" data-id='<%= card.id %>' >
     <div class="card-header">
       <img src="<%= card.user_img %>">
       <strong><%= card.name %></strong>
@@ -55,9 +58,10 @@
       <%= link_to 'Delete', "/recruiter_cards/#{card.id}", class: "delete-rcard btn btn-danger", method: :delete %>
       <%= link_to 'Edit', edit_recruiter_card_path(card.id), class: "edit-rcard btn btn-success", method: :get %>
     <% else %>
-      <%= link_to 'Like', recruiter_card_like_path(card.id), "like-rcard", method: :post %>
+      <%= link_to 'Like', recruiter_card_like_path(card.id), class: "like-rcard", method: :post %>
     <% end %>
   </div>
+</div>
 </div>
 <% end %>
 </div>
