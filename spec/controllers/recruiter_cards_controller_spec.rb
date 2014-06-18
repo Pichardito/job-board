@@ -75,10 +75,8 @@ describe RecruiterCardsController do
           post :update, {:id => @recruiter_card_test.id, :recruiter_card => {name: 'Tesla Motors' }}
         end
 
-        it 'responds with a redirect' do
-          actual = response.code
-          expected = '302'
-          expect(actual).to eq(expected)
+        it "responds with JSON" do
+          response.header['Content-Type'].should include 'application/json'
         end
 
         it 'updated person record' do
@@ -86,10 +84,6 @@ describe RecruiterCardsController do
           actual = @recruiter_card_test.name
           expected = 'Tesla Motors'
           expect(actual).to eq(expected)
-        end
-
-        it 'redirects to prospect_card index AKA the main job board' do
-          response.should redirect_to prospect_cards_path
         end
       end #describe POST update
 
