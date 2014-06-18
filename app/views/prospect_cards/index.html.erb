@@ -12,15 +12,15 @@
       <img src="<%= card.user_img %>">
       <strong><%= card.name %></strong>
     </div>IS A
-    <div class="card-text">
+    <div class="card-text card-title" data-field='title'>
       <%= card.title %>
     </div>
       <p>LOOKING FOR A...</p>
-    <div class="card-text">
+    <div class="card-text card-looking_for" data-field='looking_for'>
       <%= card.looking_for %>
     </div>
       <p>SO I CAN HELP...</p>
-    <div class="card-text">
+    <div class="card-text card-description" data-field='description'>
       <%= card.description %>
     </div></br>
   <div class="card-buttons">
@@ -44,7 +44,7 @@
       <img src="<%= card.user_img %>">
       <strong><%= card.name %></strong>
     </div>IS A
-    <div class="card-text">
+    <div class="card-text" id="ctext">
       <%= card.title %>
     </div>
       <p>LOOKING FOR A...</p>

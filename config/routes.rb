@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 resources :prospect_cards
 resources :recruiter_cards
 
+  post '/prospect_cards/:id' => 'prospect_cards#update'
+
 # LinkedIn
   get '/auth/:provider/callback' => 'sessions#create'
   get '/auth/failure' => 'welcome#index'

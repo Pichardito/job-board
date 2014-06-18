@@ -4,13 +4,13 @@ $(function(){
 
   var headers = $('.card-header');
 
-  $.each(headers, function(idx, headerEl){
-    while ( $(headerEl).width() > 250 ) {
-      var fontSize = parseInt($(headerEl).css('font-size'));
-      fontSize = fontSize - 5;
-      $(headerEl).css('font-size', fontSize);
-    };
-  });
+  // $.each(headers, function(idx, headerEl){
+  //   while ( $(headerEl).width() > 250 ) {
+  //     var fontSize = parseInt($(headerEl).css('font-size'));
+  //     fontSize = fontSize - 5;
+  //     $(headerEl).css('font-size', fontSize);
+  //   };
+  // });
 
   var cardTexts = $('.card-text');
 
@@ -126,12 +126,31 @@ $('.like-pcard').on("click", function(e){
   })
 
 
-  $(".card-text").editInPlace({
-        url: "/prospect_cards" ,
-        callback: function(unused, enteredText) {
-            return enteredText;
+  $(".card-text").each(function(ele){
+    var cardId = parseInt(this.parentElement.dataset.id);
+    $(this).editInPlace({
+        callback: function(unused, enteredText){
+          $.ajax({
+                url: '/prospect_cards/'+ cardId,
+                method: 'put',
+                dataType: 'json',
+                data: {prospect_card: { 
+                  title: $(this).parent().find('.card-title').html(),
+                  description: $(this).parent().find('.card-description').html(),
+                  looking_for: $(this).parent().find('.card-looking_for').html()
+                }},
+                success: function(data){
+                  console.log(data)
+                }
+          })
+          return enteredText;
         },
-        show_buttons: true
+        
     });
+  })
+
+  
+ 
+
 });
 
