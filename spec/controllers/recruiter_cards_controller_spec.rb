@@ -1,7 +1,5 @@
 require 'spec_helper'
 
-# THESE ALL FAIL BECAUSE THERE IS NO CURRENT_USER SO IT THROWS A REDIRECT (302) TO THE LOGIN PAGE
-# TO PASS NEED TO COMMENT OUT THIS LINE IN CONTROLLER "before_action :require_login"
 describe RecruiterCardsController do
 
   describe 'given a logged in user' do
@@ -26,6 +24,7 @@ describe RecruiterCardsController do
         @recruiter_card_test.save!
       end
 
+      # GET show
       describe 'GET show' do
         before :each do
           get :show, :id => @recruiter_card_test.id
@@ -46,8 +45,9 @@ describe RecruiterCardsController do
         it 'renders the show template' do
           expect(response).to render_template('show')
         end
-      end # describe GET
+      end # GET show
 
+      # GET edit
       describe 'GET edit' do
         before :each do
           get :edit, :id => @recruiter_card_test.id
@@ -67,66 +67,96 @@ describe RecruiterCardsController do
         it 'renders the edit template' do
           expect(response).to render_template('edit')
         end
-      end #describe GET edit
+      end # GET edit
 
+      # POST update
       describe 'POST update' do
-
         before :each do
-          post :update, {:id => @recruiter_card_test.id, :recruiter_card => {name: 'Tesla Motors' }}
+          post :update, {:id => @recruiter_card_test.id, :recruiter_card => { name: 'Elon Musk', title: 'Entrepreneur', looking_for: 'engineers', description: 'come work for Tesla!', left_pos: 100, top_pos: 100 }}
+        end
+
+        it 'updates the RecruiterCard record' do
+          @recruiter_card_test.reload
+
+          actual = @recruiter_card_test.name
+          expected = 'Elon Musk'
+          expect(actual).to eq(expected)
+
+          actual = @recruiter_card_test.title
+          expected = 'Entrepreneur'
+          expect(actual).to eq(expected)
+
+          actual = @recruiter_card_test.looking_for
+          expected = 'engineers'
+          expect(actual).to eq(expected)
+
+          actual = @recruiter_card_test.description
+          expected = 'come work for Tesla!'
+          expect(actual).to eq(expected)
+
+          actual = @recruiter_card_test.left_pos
+          expected = 100
+          expect(actual).to eq(expected)
+
+          actual = @recruiter_card_test.top_pos
+          expect(actual).to eq(expected)
         end
 
         it "responds with JSON" do
           response.header['Content-Type'].should include 'application/json'
         end
+      end # POST update
 
-        it 'updated person record' do
-          @recruiter_card_test.reload
-          actual = @recruiter_card_test.name
-          expected = 'Tesla Motors'
-          expect(actual).to eq(expected)
-        end
-      end #describe POST update
-
+      # DELETE destroy
       describe 'DELETE destroy' do
         it 'destroys a recruiter_card record' do
           expect {delete :destroy, { :id => @recruiter_card_test.id }}
             .to change(RecruiterCard, :count).by(-1)
-          end
-      end # describe DELETE destroy
-
+        end
+      end # DELETE destroy
     end #Given a recruiter card
 
+    # GET new
     describe 'GET new' do
+      before :each do
+        get :new
+      end
 
-        before :each do
-          get :new
-        end
+      it 'responds successfully' do
+        actual = response.code
+        expected = '200'
+        expect(actual).to eq(expected)
+      end
 
-        it 'responds successfully' do
-          actual = response.code
-          expected = '200'
-          expect(actual).to eq(expected)
-        end
+      it 'assigns a new recruiter card as @recruiter_card' do
+        get :new
+        assigns(:recruiter_card).should be_a_new(RecruiterCard)
+      end
 
-        it 'renders the NEW template' do
-          expect(response).to render_template('new')
-        end
+      it 'renders the NEW template' do
+        expect(response).to render_template('new')
+      end
+    end # GET new
 
-    end # describe GET new
-
-  #THIS FAILS BECAUSE THE CONTROLLER TRIES TO ASSOCIATE THE CARD WITH A CURRENT_USER THAT DOES NOT EXIST IN THE TEST.
+    # POST create
     describe 'POST create' do
+      before :each do
+        post :create, {:recruiter_card => { name: 'Oracle', title: 'CEO', looking_for: 'Developer', description: '...' }}
+      end
 
-        before :each do
-          post :create, {:recruiter_card => { name: 'Oracle', title: 'CEO', looking_for: 'Developer', description: '...' }}
-        end
+      it 'creates a RecruiterCard with the correct attribute values' do
+        new_recruiter_card = RecruiterCard.find_by(name: 'Oracle')
+        expect(new_recruiter_card.name).to eq('Oracle')
+        expect(new_recruiter_card.title).to eq('CEO')
+        expect(new_recruiter_card.looking_for).to eq('Developer')
+        expect(new_recruiter_card.description).to eq('...')
+      end
 
-        it 'responds with a redirect' do
-          actual = response.code
-          expected = '302'
-          expect(actual).to eq(expected)
-        end
-
+      it 'responds with a redirect' do
+        actual = response.code
+        expected = '302'
+        expect(actual).to eq(expected)
+      end
     end #describe POST create
   end # Given a logged in user
 end #RecruiterCardsController
