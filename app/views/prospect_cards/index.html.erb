@@ -12,15 +12,15 @@
       <img src="<%= card.user_img %>">
       <strong><%= card.name %></strong>
     </div>IS A
-    <div class="card-text">
+    <div class="card-text card-title" data-field='title'>
       <%= card.title %>
     </div>
       <p>LOOKING FOR A...</p>
-    <div class="card-text">
+    <div class="card-text card-looking_for" data-field='looking_for'>
       <%= card.looking_for %>
     </div>
       <p>SO I CAN HELP...</p>
-    <div class="card-text">
+    <div class="card-text card-description" data-field='description'>
       <%= card.description %>
     </div></br>
   <div class="card-buttons">
@@ -28,7 +28,9 @@
       <%= link_to 'Delete', "/prospect_cards/#{card.id}", class: "delete-pcard btn btn-danger", method: :delete %>
       <%= link_to 'Edit', edit_prospect_card_path(card.id), class: "edit-pcard btn btn-success", method: :get %>
     <% else %>
-      <%= link_to 'Like', prospect_card_like_path(card.id), class: "like-pcard", method: :post %>
+
+      <%= link_to 'Like', "/prospect_cards/#{card.id}/like", class: "like-pcard", method: :post %>
+
     <% end %>
   </div>
 </div>
@@ -42,7 +44,7 @@
       <img src="<%= card.user_img %>">
       <strong><%= card.name %></strong>
     </div>IS A
-    <div class="card-text">
+    <div class="card-text" id="ctext">
       <%= card.title %>
     </div>
       <p>LOOKING FOR A...</p>

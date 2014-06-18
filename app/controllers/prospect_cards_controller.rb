@@ -1,6 +1,6 @@
 class ProspectCardsController < ApplicationController
 
-before_action :require_login
+# before_action :require_login
 
   def index
     @prospect_cards = ProspectCard.all
@@ -42,7 +42,7 @@ before_action :require_login
   def update
     prospect_card = ProspectCard.find(params[:id])
     prospect_card.update(prospect_card_params)
-    render json: {}
+    render json: prospect_card.to_json
   end
 
   def destroy
