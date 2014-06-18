@@ -2,6 +2,8 @@
 <%= form_for @recruiter_card do |f| %>
   <%= f.hidden_field :name, :value => current_user.first_name + " " + current_user.last_name %>
   <%= f.hidden_field :user_img, :value => current_user.linkedin_profile_img %>
+  <%= f.hidden_field :left_pos, :value => 75 %>
+  <%= f.hidden_field :top_pos, :value => 123 %>
   <%= f.text_field :title %></br>
   <p>LOOKING FOR A...</p>
   <%= f.text_field :looking_for %>

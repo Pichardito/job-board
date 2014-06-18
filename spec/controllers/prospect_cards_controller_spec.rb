@@ -109,8 +109,8 @@ describe ProspectCardsController do
           expect(actual).to eq(expected)
       end
 
-      it "redirects to the prospect_cards view" do
-        response.should redirect_to prospect_cards_path
+      it "responds with JSON" do
+        response.header['Content-Type'].should include 'application/json'
       end
     end
 
@@ -121,11 +121,6 @@ describe ProspectCardsController do
       expect { delete :destroy, {:id => @prospect_card_test.id }}
        .to change(ProspectCard, :count).by(-1)
     end
-
-    # The test below is rendered obsolete by the ajax destroy, which should not redirect
-    # it "redirects to the prospect_cards list" do
-    #   expect(response).to redirect_to prospect_cards_path
-    # end
 
   end #DELETE
 end #Given a prospect card

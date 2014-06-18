@@ -1,4 +1,4 @@
 class ProspectCardLike < ActiveRecord::Base
-  belongs_to :users
-  belongs_to :prospect_cards
+  belongs_to :user
+  belongs_to :prospect_card
 end

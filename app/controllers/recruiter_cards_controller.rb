@@ -37,7 +37,7 @@ end
 def update
   recruiter_card = RecruiterCard.find(params[:id])
   recruiter_card.update(recruiter_card_params)
-  redirect_to prospect_cards_path
+  render json: {}
 end
 
 def destroy
@@ -49,7 +49,7 @@ end
 private
 
 def recruiter_card_params
-  params.require(:recruiter_card).permit(:name, :title, :looking_for, :description, :user_img)
+  params.require(:recruiter_card).permit(:name, :title, :looking_for, :description, :user_img, :left_pos, :top_pos)
 end
 
 end

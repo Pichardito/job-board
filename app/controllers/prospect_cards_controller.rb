@@ -54,7 +54,7 @@ before_action :require_login
   private
 
   def prospect_card_params
-    params.require(:prospect_card).permit(:name, :title, :looking_for, :description, :user_img)
+    params.require(:prospect_card).permit(:name, :title, :looking_for, :description, :user_img, :left_pos, :top_pos)
   end
 
 end

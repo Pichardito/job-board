@@ -19,24 +19,10 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @liked_prospect_cards = @user.prospect_card_likes.all
-    @liked_recruiter_cards = @user.recruiter_card_likes.all
-
-    #GETTING LIKES ASSOCIATED WITH USERS CARDS
-    #THESE GET ALL THE USERS PROSPECT AND RECRUITER CARDS
-    @prospect_cards = @user.prospect_cards.all
-    @recruiter_cards = @user.recruiter_cards.all
-
-    #THESE RETURN AN ARRAY OF THE CARD IDS BASED ON THE CARDS FOUND ABOVE
-    all_prospect_card_ids = @user.get_ids(@prospect_cards)
-    all_recruiter_card_ids = @user.get_ids(@recruiter_cards)
-
-    #THESE RETURN AN ARRAY OF THE LIKES ASSOCIATED WITH THE CARDS ABOVE
-    @prospect_card_likes = @user.get_card_likes(all_prospect_card_ids, 'prospect')
-    @recruiter_card_likes = @user.get_card_likes(all_recruiter_card_ids, 'recruiter')
-
-    #THIS RETURNS THE TOTAL NUMBER OF LIKES THE USER HAS RECEIVED
-    total_likes = @prospect_card_likes.count + @recruiter_card_likes.count
+    @prospect_cards = @user.prospect_cards
+    @recruiter_cards = @user.recruiter_cards
+    @my_prospect_card_likes = ProspectCard.likes_for_user_cards(@user)
+    @my_recruiter_card_likes = RecruiterCard.likes_for_user_cards(@user)
   end
 
   def edit
