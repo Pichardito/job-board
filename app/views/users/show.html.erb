@@ -23,7 +23,7 @@
   <div class="boss-list">
   <h2>Potential Bosses</h2>
   <ul>
-  <% @prospect_card_likes.each do |liked_card| %>
+  <% @my_prospect_card_likes.each do |liked_card| %>
     <li><%= liked_card.liker_first_name %> <%= liked_card.liker_last_name %> (<%= liked_card.liker_email %>) liked your card looking for: <%= liked_card.card_details %></li>
   <% end %>
   </ul>
@@ -31,7 +31,7 @@
   <div class="employee-list">
   <h2>Potential Employees</h2>
   <ul>
-  <% @recruiter_card_likes.each do |liked_card| %>
+  <% @my_recruiter_card_likes.each do |liked_card| %>
     <li><%= liked_card.liker_first_name %> <%= liked_card.liker_last_name %> (<%= liked_card.liker_email %>) liked your card looking for: <%= liked_card.card_details %></li>
   <% end %>
   </ul>

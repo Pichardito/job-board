@@ -6,7 +6,7 @@
 </p>
 
 <% @prospect_cards.each do |card| %>
-<div class="card-pos" style="position: relative; left:<%= card.left_pos %>px; top: <%= card.top_pos %>px;">
+<div class="card-pos" style="display: inline-block; position: relative; left:<%= card.left_pos %>px; top: <%= card.top_pos %>px;">
 <div class="prospect-card" data-id='<%= card.id %>' >
     <div class="card-header">
       <img src="<%= card.user_img %>">
@@ -36,7 +36,7 @@
 <% end %>
 
 <% @recruiter_cards.each do |card| %>
-<div class="card-pos" style="position: relative; left:<%= card.left_pos %>px; top: <%= card.top_pos %>px;">
+<div class="card-pos" style="display: inline-block; position: relative; left:<%= card.left_pos %>px; top: <%= card.top_pos %>px;">
 <div class="recruiter-card" data-id='<%= card.id %>' >
     <div class="card-header">
       <img src="<%= card.user_img %>">
