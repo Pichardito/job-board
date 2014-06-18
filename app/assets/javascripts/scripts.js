@@ -39,17 +39,15 @@ $(function(){
     });
 
   var headers = $('.card-header');
-
-  // $.each(headers, function(idx, headerEl){
-  //   while ( $(headerEl).width() > 250 ) {
-  //     var fontSize = parseInt($(headerEl).css('font-size'));
-  //     fontSize = fontSize - 5;
-  //     $(headerEl).css('font-size', fontSize);
-  //   };
-  // });
+  $.each(headers, function(idx, headerEl){
+    while ( $(headerEl).width() > 250 ) {
+      var fontSize = parseInt($(headerEl).css('font-size'));
+      fontSize = fontSize - 5;
+      $(headerEl).css('font-size', fontSize);
+    };
+  });
 
   var cardTexts = $('.card-text');
-
   $.each(cardTexts, function(idx, textEl){
     while ( $(textEl).height() > 100 ) {
       var fontSize = parseInt($(textEl).css('font-size'));
@@ -58,79 +56,56 @@ $(function(){
     };
   });
 
-
-
-
 $('.delete-pcard').on("click", function(e){
-
-    // $(this).parents('.prospect-card').remove()
-    e.preventDefault();
-
-    var that = this;
-    var cardId = $(this).parents('.prospect-card').data('id');
-
-          $.ajax({
-
+  e.preventDefault();
+  var that = this;
+  var cardId = $(this).parents('.prospect-card').data('id');
+  $.ajax({
       url: '/prospect_cards/'+ cardId,
-              method: 'delete',
-              dataType: 'json',
-              data: {recruiter_card: this.recruiter_card},
-              success: function(data){
+      method: 'delete',
+      dataType: 'json',
+      data: {recruiter_card: this.recruiter_card},
+      success: function(data){
         $(that).parents('.prospect-card').remove()
-              }
-    })
-
-    return false;
-
-  })
+      }
+    });
+  return false;
+});
 
 $('.delete-rcard').on("click", function(e){
-
-    // $(this).parents('.recruiter-card').remove()
-    e.preventDefault();
-
-    var that = this;
-    var rcardId = $(this).parents('.recruiter-card').data('id');
-          $.ajax({
+  e.preventDefault();
+  var that = this;
+  var rcardId = $(this).parents('.recruiter-card').data('id');
+  $.ajax({
       url: '/recruiter_cards/'+ rcardId,
-              method: 'delete',
-              dataType: 'json',
-              data: {recruiter_card: this.recruiter_card},
-              success: function(data){
+      method: 'delete',
+      dataType: 'json',
+      data: {recruiter_card: this.recruiter_card},
+      success: function(data){
         $(that).parents('.recruiter-card').remove()
-              }
-    })
-
-    return false;
-
-  })
+      }
+    });
+  return false;
+});
 
 $('.like-pcard').on("click", function(e){
-
-    // $(this).parents('.prospect-card').remove()
-    e.preventDefault();
-
-    var target = e.target;
-    var that = this;
-    var cardId = $(this).parents('.prospect-card').data('id');
-
-          $.ajax({
-
+  e.preventDefault();
+  var target = e.target;
+  var that = this;
+  var cardId = $(this).parents('.prospect-card').data('id');
+  $.ajax({
       url: '/prospect_cards/'+ cardId + '/like',
-              method: 'post',
-              dataType: 'json',
-              data: {prospect_card: this.prospect_card},
-              success: function(data){
+      method: 'post',
+      dataType: 'json',
+      data: {prospect_card: this.prospect_card},
+      success: function(data){
         $(target).html('Liked');
-              }
-    })
+      }
+    });
+  return false;
+});
 
-    return false;
-
-  })
-
-
-  $(".card-text").each(function(ele){
+$(".card-text").each(function(ele){
     var cardId = parseInt(this.parentElement.dataset.id);
     $(this).editInPlace({
         callback: function(unused, enteredText){
@@ -138,7 +113,7 @@ $('.like-pcard').on("click", function(e){
                 url: '/prospect_cards/'+ cardId,
                 method: 'put',
                 dataType: 'json',
-                data: {prospect_card: { 
+                data: {prospect_card: {
                   title: $(this).parent().find('.card-title').html(),
                   description: $(this).parent().find('.card-description').html(),
                   looking_for: $(this).parent().find('.card-looking_for').html()
@@ -149,7 +124,7 @@ $('.like-pcard').on("click", function(e){
           })
           return enteredText;
         },
-        
+
     });
   })
 
@@ -161,7 +136,7 @@ $(".rcard-text").each(function(ele){
                 url: '/recruiter_cards/'+ cardId,
                 method: 'put',
                 dataType: 'json',
-                data: {recruiter_card: { 
+                data: {recruiter_card: {
                   title: $(this).parent().find('.card-title').html(),
                   description: $(this).parent().find('.card-description').html(),
                   looking_for: $(this).parent().find('.card-looking_for').html()
@@ -172,11 +147,8 @@ $(".rcard-text").each(function(ele){
           })
           return enteredText;
         },
-        
+
     });
   })
-  
- 
 
 });
-
