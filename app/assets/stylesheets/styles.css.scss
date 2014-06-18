@@ -11,6 +11,15 @@
 
 .likes-received-container {
   display: inline-block;
+  background-color: white;
+  color: black;
+  float: right;
+  margin: 10px;
+  position: fixed;
+  top: 1em;
+  right: 1em;
+  z-index: 2; 
+
 }
 
 .view-board-button {

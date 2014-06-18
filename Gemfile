@@ -30,7 +30,6 @@ group :development, :test do
   gem 'pry'
   gem 'spring'
   gem 'rspec-rails', '~> 2.14.2'
-
 end
 
 gem 'omniauth'
@@ -39,3 +38,4 @@ gem 'linkedin'
 gem 'sorcery'
 gem 'jquery-ui-rails'
 gem 'twitter-bootstrap-rails'
+
