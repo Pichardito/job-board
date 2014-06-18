@@ -14,7 +14,7 @@
       <% if current_user.uid %>
         <div class="linkedin-profile">
           <img src="<%= current_user.linkedin_profile_img %>">
-          <div>Signed in as <strong><%= current_user.name %></strong></br>
+          <div>Signed in as <strong><%= current_user.first_name %> <%= current_user.last_name %></strong></br>
           (<%= current_user.linkedin_email %>)</div>
         </div>
       <% else %>
