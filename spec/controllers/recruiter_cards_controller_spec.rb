@@ -1,7 +1,5 @@
 require 'spec_helper'
 
-# THESE ALL FAIL BECAUSE THERE IS NO CURRENT_USER SO IT THROWS A REDIRECT (302) TO THE LOGIN PAGE
-# TO PASS NEED TO COMMENT OUT THIS LINE IN CONTROLLER "before_action :require_login"
 describe RecruiterCardsController do
 
   describe 'given a logged in user' do
@@ -70,21 +68,41 @@ describe RecruiterCardsController do
       end #describe GET edit
 
       describe 'POST update' do
-
         before :each do
-          post :update, {:id => @recruiter_card_test.id, :recruiter_card => {name: 'Tesla Motors' }}
+          post :update, {:id => @recruiter_card_test.id, :recruiter_card => { name: 'Elon Musk', title: 'Entrepreneur', looking_for: 'engineers', description: 'come work for Tesla!', left_pos: 100, top_pos: 100 }}
+        end
+
+        it 'updates the RecruiterCard record' do
+          @recruiter_card_test.reload
+
+          actual = @recruiter_card_test.name
+          expected = 'Elon Musk'
+          expect(actual).to eq(expected)
+
+          actual = @recruiter_card_test.title
+          expected = 'Entrepreneur'
+          expect(actual).to eq(expected)
+
+          actual = @recruiter_card_test.looking_for
+          expected = 'engineers'
+          expect(actual).to eq(expected)
+
+          actual = @recruiter_card_test.description
+          expected = 'come work for Tesla!'
+          expect(actual).to eq(expected)
+
+          actual = @recruiter_card_test.left_pos
+          expected = 100
+          expect(actual).to eq(expected)
+
+          actual = @recruiter_card_test.top_pos
+          expect(actual).to eq(expected)
         end
 
         it "responds with JSON" do
           response.header['Content-Type'].should include 'application/json'
         end
 
-        it 'updated person record' do
-          @recruiter_card_test.reload
-          actual = @recruiter_card_test.name
-          expected = 'Tesla Motors'
-          expect(actual).to eq(expected)
-        end
       end #describe POST update
 
       describe 'DELETE destroy' do
@@ -114,7 +132,6 @@ describe RecruiterCardsController do
 
     end # describe GET new
 
-  #THIS FAILS BECAUSE THE CONTROLLER TRIES TO ASSOCIATE THE CARD WITH A CURRENT_USER THAT DOES NOT EXIST IN THE TEST.
     describe 'POST create' do
 
         before :each do
