@@ -30,6 +30,7 @@ group :development, :test do
   gem 'pry'
   gem 'spring'
   gem 'rspec-rails', '~> 2.14.2'
+  gem 'database_cleaner'
 end
 
 gem 'omniauth'
