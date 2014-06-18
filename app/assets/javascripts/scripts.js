@@ -149,6 +149,28 @@ $('.like-pcard').on("click", function(e){
     });
   })
 
+$(".rcard-text").each(function(ele){
+    var cardId = parseInt(this.parentElement.dataset.id);
+    $(this).editInPlace({
+        callback: function(unused, enteredText){
+          $.ajax({
+                url: '/recruiter_cards/'+ cardId,
+                method: 'put',
+                dataType: 'json',
+                data: {recruiter_card: { 
+                  title: $(this).parent().find('.card-title').html(),
+                  description: $(this).parent().find('.card-description').html(),
+                  looking_for: $(this).parent().find('.card-looking_for').html()
+                }},
+                success: function(data){
+                  console.log(data)
+                }
+          })
+          return enteredText;
+        },
+        
+    });
+  })
   
  
 
