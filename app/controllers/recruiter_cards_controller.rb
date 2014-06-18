@@ -27,7 +27,7 @@ end
                                         })
     current_user.recruiter_card_likes << new_like
     recruiter_card.recruiter_card_likes << new_like
-    redirect_to prospect_cards_path
+    render json: {}
   end
 
 def edit

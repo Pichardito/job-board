@@ -58,7 +58,7 @@
     <% if card.user_id == current_user.id %>
       <%= link_to 'Delete', "/recruiter_cards/#{card.id}", class: "delete-rcard btn btn-danger", method: :delete %>
     <% else %>
-      <%= link_to 'Like', recruiter_card_like_path(card.id), class: "like-rcard", method: :post %>
+      <%= link_to 'Like', "/recruiter_cards/#{card.id}/like", class: "like-rcard", method: :post %>
     <% end %>
   </div>
 </div>
