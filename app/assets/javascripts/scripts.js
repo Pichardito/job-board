@@ -27,33 +27,15 @@ $(function(){
     var topPos = ui.offset.top;
     var leftPos = ui.offset.left;
     $.ajax({
-          url: '/recruiter_cards/' + cardId,
-          method: 'put',
-          dataType: 'json',
-          data: { recruiter_card: { left_pos: leftPos, top_pos: topPos } },
-          success: function(data){
-            console.log(data);
-          }
-        });
-      }
-    });
-
-  var headers = $('.card-header');
-  $.each(headers, function(idx, headerEl){
-    while ( $(headerEl).width() > 250 ) {
-      var fontSize = parseInt($(headerEl).css('font-size'));
-      fontSize = fontSize - 5;
-      $(headerEl).css('font-size', fontSize);
-    };
-  });
-
-  var cardTexts = $('.card-text');
-  $.each(cardTexts, function(idx, textEl){
-    while ( $(textEl).height() > 100 ) {
-      var fontSize = parseInt($(textEl).css('font-size'));
-      fontSize = fontSize - 5;
-      $(textEl).css('font-size', fontSize);
-    };
+        url: '/recruiter_cards/' + cardId,
+        method: 'put',
+        dataType: 'json',
+        data: { recruiter_card: { left_pos: leftPos, top_pos: topPos } },
+        success: function(data){
+          console.log(data);
+        }
+      });
+    }
   });
 
 $('.delete-pcard').on("click", function(e){
@@ -105,8 +87,28 @@ $('.like-pcard').on("click", function(e){
   return false;
 });
 
+$('.like-rcard').on("click", function(e){
+  e.preventDefault();
+  var target = e.target;
+  var that = this;
+  var cardId = $(this).parents('.recruiter-card').data('id');
+  $.ajax({
+    url: '/recruiter_cards/'+ cardId + '/like',
+    method: 'post',
+    dataType: 'json',
+    data: {recruiter_card: this.recruiter_card},
+    success: function(data){
+      $(target).html('Liked');    
+    }
+  });
+  return false;
+});
+
+
+
 $(".card-text").each(function(ele){
     var cardId = parseInt(this.parentElement.dataset.id);
+    if (cardId === currentUser.id){
     $(this).editInPlace({
         callback: function(unused, enteredText){
           $.ajax({
@@ -123,13 +125,17 @@ $(".card-text").each(function(ele){
                 }
           })
           return enteredText;
-        },
+        }
 
     });
-  })
+  }
+})
 
 $(".rcard-text").each(function(ele){
     var cardId = parseInt(this.parentElement.dataset.id);
+    debugger;
+    if (cardId === parseInt(currentUser.id)){
+      debugger;
     $(this).editInPlace({
         callback: function(unused, enteredText){
           $.ajax({
@@ -147,8 +153,35 @@ $(".rcard-text").each(function(ele){
           })
           return enteredText;
         },
-
     });
-  })
+  }
+});
+
+  var headers = $('.card-header');
+  $.each(headers, function(idx, headerEl){
+    while ( $(headerEl).width() > 250 ) {
+      var fontSize = parseInt($(headerEl).css('font-size'));
+      fontSize = fontSize - 5;
+      $(headerEl).css('font-size', fontSize);
+    };
+  });
+
+  var cardTexts = $('.card-text card-description', '.card-text card-looking_for', '.card-text card-title');
+  $.each(cardTexts, function(idx, textEl){
+    while ( $(textEl).height() > 100 ) {
+      var fontSize = parseInt($(textEl).css('font-size'));
+      fontSize = fontSize - 5;
+      $(textEl).css('font-size', fontSize);
+    };
+  });
+
+  var cardTexts = $('.card-text');
+  $.each(cardTexts, function(idx, textEl){
+    while ( $(textEl).height() > 100 ) {
+      var fontSize = parseInt($(textEl).css('font-size'));
+      fontSize = fontSize - 5;
+      $(textEl).css('font-size', fontSize);
+    };
+  });
 
 });

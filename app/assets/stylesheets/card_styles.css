@@ -62,7 +62,7 @@
   text-align: left;
   background-color : #F7F778;
   height: 80px;
-  overflow: hidden;
+  /*overflow: hidden;*/
   font-size: 30px;
   padding: 10px;
   line-height: 30px;

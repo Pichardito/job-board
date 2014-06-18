@@ -6,6 +6,14 @@
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 
+  <% if current_user %>
+    <script>
+    window.currentUser = {
+      id: '<%= current_user.id %>'
+    }
+  </script>
+  <% end %>
+
 </head>
 <body>
 
