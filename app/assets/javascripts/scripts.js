@@ -4,13 +4,13 @@ $(function(){
 
   var headers = $('.card-header');
 
-  // $.each(headers, function(idx, headerEl){
-  //   while ( $(headerEl).width() > 250 ) {
-  //     var fontSize = parseInt($(headerEl).css('font-size'));
-  //     fontSize = fontSize - 5;
-  //     $(headerEl).css('font-size', fontSize);
-  //   };
-  // });
+  $.each(headers, function(idx, headerEl){
+    while ( $(headerEl).width() > 250 ) {
+      var fontSize = parseInt($(headerEl).css('font-size'));
+      fontSize = fontSize - 5;
+      $(headerEl).css('font-size', fontSize);
+    };
+  });
 
   var cardTexts = $('.card-text');
 
@@ -125,6 +125,29 @@ $('.like-pcard').on("click", function(e){
 
   })
 
+$('.like-rcard').on("click", function(e){
+
+    // $(this).parents('.prospect-card').remove()
+    e.preventDefault();
+
+    var target = e.target;
+    var that = this;
+    var cardId = $(this).parents('.recruiter-card').data('id');
+
+          $.ajax({
+
+      url: '/recruiter_cards/'+ cardId + '/like',
+              method: 'post',
+              dataType: 'json',
+              data: {recruiter_card: this.recruiter_card},
+              success: function(data){
+        $(target).html('Liked');
+              }
+    })
+
+    return false;
+
+  })
 
   $(".card-text").each(function(ele){
     var cardId = parseInt(this.parentElement.dataset.id);
@@ -149,6 +172,28 @@ $('.like-pcard').on("click", function(e){
     });
   })
 
+$(".rcard-text").each(function(ele){
+    var cardId = parseInt(this.parentElement.dataset.id);
+    $(this).editInPlace({
+        callback: function(unused, enteredText){
+          $.ajax({
+                url: '/recruiter_cards/'+ cardId,
+                method: 'put',
+                dataType: 'json',
+                data: {recruiter_card: { 
+                  title: $(this).parent().find('.card-title').html(),
+                  description: $(this).parent().find('.card-description').html(),
+                  looking_for: $(this).parent().find('.card-looking_for').html()
+                }},
+                success: function(data){
+                  console.log(data)
+                }
+          })
+          return enteredText;
+        },
+        
+    });
+  })
   
  
 

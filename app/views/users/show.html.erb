@@ -59,8 +59,7 @@
     </div></br>
   <div class="card-buttons">
     <% if card.user_id == current_user.id %>
-      <%= link_to 'Delete', "/prospect_cards/#{card.id}", class: "delete-pcard btn btn-danger", method: :delete %>
-      <%= link_to 'Edit', edit_prospect_card_path(card.id), class: "edit-pcard btn btn-success", method: :get %>
+      <%= link_to 'Delete Card', "/prospect_cards/#{card.id}", class: "delete-pcard btn btn-danger", method: :delete %>
     <% else %>
       <%= link_to 'Like', prospect_card_like_path(card.id), method: :post %>
     <% end %>
@@ -74,21 +73,21 @@
       <img src="<%= card.user_img %>">
       <strong><%= card.name %></strong>
     </div>IS A
-    <div class="card-text">
+    <div class="rcard-text">
       <%= card.title %>
     </div>
       <p>LOOKING FOR A...</p>
-    <div class="card-text">
+    <div class="rcard-text">
       <%= card.looking_for %>
     </div>
       <p>TO HELP WITH...</p>
-    <div class="card-text">
+    <div class="rcard-text">
       <%= card.description %>
     </div></br>
   <div class="card-buttons">
     <% if card.user_id == current_user.id %>
-      <%= link_to 'Delete', "/recruiter_cards/#{card.id}", class: "delete-rcard btn btn-danger", method: :delete %>
-      <%= link_to 'Edit', edit_recruiter_card_path(card.id), class: "edit-rcard btn btn-success", method: :get %>
+      <%= link_to 'Delete Card', "/recruiter_cards/#{card.id}", class: "delete-rcard btn btn-danger", method: :delete %>
+      
     <% else %>
       <%= link_to 'Like', recruiter_card_like_path(card.id), method: :post %>
     <% end %>
