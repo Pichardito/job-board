@@ -1,6 +1,42 @@
 $(function(){
-  $('.prospect-card').draggable();
-  $('.recruiter-card').draggable();
+
+  $('.prospect-card').draggable({
+    containment: "document",
+    refreshPositions: true,
+    stop: function(event, ui){
+      var cardId = $(this).data('id');
+      var topPos = ui.offset.top;
+      var leftPos = ui.offset.left;
+      $.ajax({
+          url: '/prospect_cards/' + cardId,
+          method: 'put',
+          dataType: 'json',
+          data: { prospect_card: { left_pos: leftPos, top_pos: topPos } },
+          success: function(data){
+            console.log(data);
+          }
+        });
+      }
+    });
+
+  $('.recruiter-card').draggable({
+    containment: "document",
+    refreshPositions: true,
+    stop: function(event, ui){
+    var cardId = $(this).data('id');
+    var topPos = ui.offset.top;
+    var leftPos = ui.offset.left;
+    $.ajax({
+          url: '/recruiter_cards/' + cardId,
+          method: 'put',
+          dataType: 'json',
+          data: { recruiter_card: { left_pos: leftPos, top_pos: topPos } },
+          success: function(data){
+            console.log(data);
+          }
+        });
+      }
+    });
 
   var headers = $('.card-header');
 
@@ -21,38 +57,6 @@ $(function(){
       $(textEl).css('font-size', fontSize);
     };
   });
-
-  $('.main-board-container').droppable({
-    drop: function(event, position){
-
-      var cardId = position.draggable.data('id');
-      var cardType = position.draggable.attr('class').split(' ')[0];
-      var topPos = position.position.top;
-      var leftPos = position.position.left;
-
-      if ( cardType == 'prospect-card' ){
-        $.ajax({
-          url: '/prospect_cards/' + cardId,
-          method: 'put',
-          dataType: 'json',
-          data: { prospect_card: { left_pos: leftPos, top_pos: topPos } },
-          success: function(data){
-            console.log(data);
-          }
-        });
-      } else {
-        $.ajax({
-            url: '/recruiter_cards/' + cardId,
-            method: 'put',
-            dataType: 'json',
-            data: { recruiter_card: { left_pos: leftPos, top_pos: topPos } },
-            success: function(data){
-              console.log(data);
-            }
-        })
-      } //End of if/else
-    } //End of Drop function
-  }); //End of Droppable event
 
 
 
