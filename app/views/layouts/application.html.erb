@@ -4,14 +4,15 @@
   <title>JobBoard</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
+  <link href='http://fonts.googleapis.com/css?family=Paytone+One' rel='stylesheet' type='text/css'>
   <%= csrf_meta_tags %>
 
   <% if current_user %>
     <script>
-    window.currentUser = {
-      id: '<%= current_user.id %>'
-    }
-  </script>
+      window.currentUser = {
+        id: '<%= current_user.id %>'
+      }
+    </script>
   <% end %>
 
 </head>
