@@ -163,6 +163,7 @@ $('.like-rcard').on("click", function(e){
 //     })
 // });
 
+<<<<<<< HEAD
 // $(".rcard-text").each(function(ele){
 //     var cardId = parseInt(this.parentElement.dataset.id);
 //     $(this).editInPlace({
@@ -185,5 +186,86 @@ $('.like-rcard').on("click", function(e){
 //         }
 //     });
 // });
+=======
+$(".card-text").each(function(ele){
+    var cardId = parseInt(this.parentElement.dataset.id);
+    var cardUserID = parseInt(this.parentElement.dataset.userId);
+    var currentuserid = parseInt(currentUser.id);
+    if (cardUserID === currentuserid){
+    $(this).editInPlace({
+        callback: function(unused, enteredText){
+          $.ajax({
+                url: '/prospect_cards/'+ cardId,
+                method: 'put',
+                dataType: 'json',
+                data: {prospect_card: {
+                  title: $(this).parent().find('.card-title').html(),
+                  description: $(this).parent().find('.card-description').html(),
+                  looking_for: $(this).parent().find('.card-looking_for').html()
+                }},
+                success: function(data){
+                  console.log(data)
+                }
+          })
+          return enteredText;
+        }
+
+    });
+  }
+})
+
+$(".rcard-text").each(function(ele){
+    var cardId = parseInt(this.parentElement.dataset.id);
+    var cardUserID = parseInt(this.parentElement.dataset.userId);
+    var currentuserid = parseInt(currentUser.id);
+    if (cardUserID === currentuserid){
+    $(this).editInPlace({
+        callback: function(unused, enteredText){
+          $.ajax({
+                url: '/recruiter_cards/'+ cardId,
+                method: 'put',
+                dataType: 'json',
+                data: {recruiter_card: {
+                  title: $(this).parent().find('.card-title').html(),
+                  description: $(this).parent().find('.card-description').html(),
+                  looking_for: $(this).parent().find('.card-looking_for').html()
+                }},
+                success: function(data){
+                  console.log(data)
+                }
+          })
+          return enteredText;
+        },
+    });
+  }
+});
+
+  var headers = $('.card-header');
+  $.each(headers, function(idx, headerEl){
+    while ( $(headerEl).width() > 250 ) {
+      var fontSize = parseInt($(headerEl).css('font-size'));
+      fontSize = fontSize - 5;
+      $(headerEl).css('font-size', fontSize);
+    };
+  });
+
+  var cardTexts = $('.card-text card-description', '.card-text card-looking_for', '.card-text card-title');
+  $.each(cardTexts, function(idx, textEl){
+    while ( $(textEl).height() > 100 ) {
+      var fontSize = parseInt($(textEl).css('font-size'));
+      fontSize = fontSize - 5;
+      $(textEl).css('font-size', fontSize);
+    };
+  });
+
+  var cardTexts = $('.card-text');
+  $.each(cardTexts, function(idx, textEl){
+    while ( $(textEl).height() > 100 ) {
+      var fontSize = parseInt($(textEl).css('font-size'));
+      fontSize = fontSize - 5;
+      $(textEl).css('font-size', fontSize);
+    };
+  });
+>>>>>>> 64c1a522188610cc2dddc0e54213a0101476ca4e
 
 });
