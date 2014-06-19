@@ -1,4 +1,5 @@
 
+
 <div class="view-board-button">
   <%= link_to 'Back To Job Board', prospect_cards_path %>
 </div>
@@ -41,6 +42,11 @@
 <h2>Your cards:</h2>
 
 <% @prospect_cards.each do |card| %>
+<% if current_user.oauth_token %>
+  <% card.user_img = current_user.linkedin_profile_img %>
+<% else %>
+  <% card.user_img = asset_path('profile_image.jpg') %>
+<% end %>
 <div class="prospect-card" data-id=<%= card.id %>>
     <div class="card-header">
       <img src="<%= card.user_img %>">
@@ -68,6 +74,11 @@
 <% end %>
 
 <% @recruiter_cards.each do |card| %>
+<% if current_user.oauth_token %>
+  <% card.user_img = current_user.linkedin_profile_img %>
+<% else %>
+  <% card.user_img = asset_path('profile_image.jpg') %>
+<% end %>
 <div class="recruiter-card" data-id=<%= card.id %>>
     <div class="card-header">
       <img src="<%= card.user_img %>">
@@ -87,7 +98,7 @@
   <div class="card-buttons">
     <% if card.user_id == current_user.id %>
       <%= link_to 'Delete Card', "/recruiter_cards/#{card.id}", class: "delete-rcard btn btn-danger", method: :delete %>
-      
+
     <% else %>
       <%= link_to 'Like', recruiter_card_like_path(card.id), method: :post %>
     <% end %>
