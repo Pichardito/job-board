@@ -13,6 +13,7 @@
   display: inline-block;
   width: 49%;
   text-align: center;
+  font-size: 18px;
 }
 
 .main-board-header {
@@ -36,6 +37,7 @@ form {
 }
 
 body {
+  text-align: center;
   color: white;
   background-image: asset-url("black_paper_@2X.png");
 }
