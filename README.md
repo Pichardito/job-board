@@ -41,28 +41,27 @@ In the lobby of each of General Assembly's offices lies "The Search Engine," a f
 //******** EDIT YOUR CARDS RIGHT ON THE BOARD, AND BE SURE THAT ONLY YOU CAN CHANGE YOUR CARDS ********//
 
 $(".card-text").each(function(ele){
-    var cardId = parseInt(this.parentElement.dataset.id);
-    var cardUserID = parseInt(this.parentElement.dataset.userId);
-    var currentuserid = parseInt(currentUser.id);
-    if (cardUserID === currentuserid){
+  var cardId = parseInt(this.parentElement.dataset.id);
+  var cardUserID = parseInt(this.parentElement.dataset.userId);
+  var currentuserid = parseInt(currentUser.id);
+  if (cardUserID === currentuserid){
     $(this).editInPlace({
-        callback: function(unused, enteredText){
-          $.ajax({
-                url: '/prospect_cards/'+ cardId,
-                method: 'put',
-                dataType: 'json',
-                data: {prospect_card: {
-                  title: $(this).parent().find('.card-title').html(),
-                  description: $(this).parent().find('.card-description').html(),
-                  looking_for: $(this).parent().find('.card-looking_for').html()
-                }},
-                success: function(data){
-                  console.log(data)
-                }
-          })
-          return enteredText;
+    callback: function(unused, enteredText){
+    $.ajax({
+      url: '/prospect_cards/'+ cardId,
+      method: 'put',
+      dataType: 'json',
+      data: {prospect_card: {
+      title: $(this).parent().find('.card-title').html(),
+      description: $(this).parent().find('.card-description').html(),
+      looking_for: $(this).parent().find('.card-looking_for').html()
+      }},
+        success: function(data){
+        console.log(data)
         }
-
+    });
+    return enteredText;
+    }
     });
   }
 })
