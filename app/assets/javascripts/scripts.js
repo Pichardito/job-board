@@ -40,8 +40,6 @@ $(function(){
     }
   });
 
-//****** DELETE CARD WITH AJAX FUNCTIONS ******//
-
 $('.delete-pcard').on("click", function(e){
   e.preventDefault();
   var that = this;
