@@ -9,7 +9,7 @@
   <% else %>
   <div class="normal-profile">
     <div class="card-header">
-      <img src="/assets/profile_image.jpg">
+      <img src="<%= asset_path('profile_image.jpg') %>">
       <strong><%= current_user.first_name %> <%= current_user.last_name %></strong></br>
     </div>
   <% end %>

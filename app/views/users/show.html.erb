@@ -1,46 +1,33 @@
 
+
 <div class="view-board-button">
   <%= link_to 'Back To Job Board', prospect_cards_path %>
-</div>
-<!--<%= link_to 'Delete your account', destroy_user_path(current_user), :method=>'delete', :confirm=>'You sure?'%> -->
-
-<div class="user-profile">
-<% if current_user.oauth_token %>
-  <div class="linkedin-profile">
-    <img src="<%= current_user.linkedin_profile_img %>">
-    <h2><%= current_user.first_name %> <%= current_user.last_name %></h2>
-    <%= current_user.linkedin_email %>
-  </div>
-<% else %>
-  <div class="normal-user">
-    <h2><%= current_user.first_name %> <%= current_user.last_name %></h2>
-    <%= current_user.email %>
-  </div>
-<% end %>
 </div>
 
 <div class="likes-received-container">
   <div>
   <h2>Potential Bosses</h2>
-  <ul>
   <% @my_prospect_card_likes.each do |liked_card| %>
-    <li><%= liked_card.liker_first_name %> <%= liked_card.liker_last_name %> (<%= liked_card.liker_email %>) liked your card looking for: <%= liked_card.card_details %></li>
+    <p><strong><%= liked_card.liker_first_name %> <%= liked_card.liker_last_name %></strong> (<%= liked_card.liker_email %>) liked your card looking for: <%= liked_card.card_details %></p>
   <% end %>
-  </ul>
   </div>
+
   <div class="employee-list">
   <h2>Potential Employees</h2>
-  <ul>
   <% @my_recruiter_card_likes.each do |liked_card| %>
-    <li><%= liked_card.liker_first_name %> <%= liked_card.liker_last_name %> (<%= liked_card.liker_email %>) liked your card looking for: <%= liked_card.card_details %></li>
+    <p><%= liked_card.liker_first_name %> <%= liked_card.liker_last_name %> (<%= liked_card.liker_email %>) liked your card looking for: <%= liked_card.card_details %></p>
   <% end %>
-  </ul>
   </div>
 </div>
 
+<div class="profile-cards">
 <h2>Your cards:</h2>
-
 <% @prospect_cards.each do |card| %>
+<% if current_user.oauth_token %>
+  <% card.user_img = current_user.linkedin_profile_img %>
+<% else %>
+  <% card.user_img = asset_path('profile_image.jpg') %>
+<% end %>
 <div class="prospect-card" data-id=<%= card.id %>>
     <div class="card-header">
       <img src="<%= card.user_img %>">
@@ -68,6 +55,11 @@
 <% end %>
 
 <% @recruiter_cards.each do |card| %>
+<% if current_user.oauth_token %>
+  <% card.user_img = current_user.linkedin_profile_img %>
+<% else %>
+  <% card.user_img = asset_path('profile_image.jpg') %>
+<% end %>
 <div class="recruiter-card" data-id=<%= card.id %>>
     <div class="card-header">
       <img src="<%= card.user_img %>">
@@ -87,7 +79,7 @@
   <div class="card-buttons">
     <% if card.user_id == current_user.id %>
       <%= link_to 'Delete Card', "/recruiter_cards/#{card.id}", class: "delete-rcard btn btn-danger", method: :delete %>
-      
+
     <% else %>
       <%= link_to 'Like', recruiter_card_like_path(card.id), method: :post %>
     <% end %>
@@ -95,3 +87,4 @@
 </div>
 <% end %>
 </div>
+<!--<footer><%= link_to 'Delete your account', destroy_user_path(current_user), :method=>'delete', :confirm=>'You sure?'%></footer>-->

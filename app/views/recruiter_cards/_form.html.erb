@@ -1,7 +1,12 @@
+<% if current_user.uid %>
+  <% profile_img = current_user.linkedin_profile_img %>
+<% else %>
+  <% profile_img = asset_path('profile_image.jpg') %>
+<% end %>
 IS A
 <%= form_for @recruiter_card do |f| %>
   <%= f.hidden_field :name, :value => current_user.first_name + " " + current_user.last_name %>
-  <%= f.hidden_field :user_img, :value => current_user.linkedin_profile_img %>
+  <%= f.hidden_field :user_img, :value => profile_img %>
   <%= f.hidden_field :left_pos, :value => 75 %>
   <%= f.hidden_field :top_pos, :value => 123 %>
   <%= f.text_field :title %></br>

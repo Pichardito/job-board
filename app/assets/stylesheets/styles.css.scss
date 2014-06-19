@@ -5,27 +5,27 @@
 
 .main-banner {
   margin-top: 2em;
-  font-size: 4em;
+  margin-bottom: 30px;
+  font-size: 5em;
   color: lightgrey;
 }
 
-.likes-received-container {
+.likes-received-container div {
   display: inline-block;
-  background-color: white;
-  color: black;
-  float: right;
-  margin: 10px;
-  position: fixed;
-  top: 1em;
-  right: 1em;
-  z-index: 2;
-   
+  width: 49%;
+  text-align: center;
+  font-size: 18px;
+}
 
+.main-board-header {
+  text-align: center;
 }
 
 .view-board-button {
-  margin: 10px;
+  text-align: center;
+  padding: 50px;
   font-size: 3em;
+  margin-bottom: 2em;
 }
 
 .main-board-container {
@@ -73,15 +73,35 @@ body {
   display: inline-block;
 }
 
+.profile-cards {
+  display: inline-block;
+}
+
+.profile-cards div {
+  display: inline-block;
+}
+
+.profile-cards h2 {
+  text-align: center;
+}
+
 .errors {
   color: red;
 }
 
 .delete-user {
   margin-top: 150px;
-
 }
 
 .delete-user:hover {
+  color: red;
+}
+
+footer {
+  text-align: center;
+  margin: 20px;
+}
+
+footer a {
   color: red;
 }
