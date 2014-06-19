@@ -8,6 +8,8 @@ In the lobby of each of General Assembly's offices lies "The Search Engine," a f
 
 **Drag and drop your card anywhere on the page and it will stay there for everyone who visits the site - just like in real life!**
 
+![The Job Board](http://i.imgur.com/6h0Gi9P.png)
+
 **If someone likes one of your cards a notification with their email address will appear on your profile**
 
 **Job Board leverages AJAX to let you edit, move and delete your cards on the page without it needing to refresh, here are some cool examples:**
