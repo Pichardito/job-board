@@ -3,22 +3,6 @@
 <div class="view-board-button">
   <%= link_to 'Back To Job Board', prospect_cards_path %>
 </div>
-<!--<%= link_to 'Delete your account', destroy_user_path(current_user), :method=>'delete', :confirm=>'You sure?'%> -->
-
-<div class="user-profile">
-<% if current_user.oauth_token %>
-  <div class="linkedin-profile">
-    <img src="<%= current_user.linkedin_profile_img %>">
-    <h2><%= current_user.first_name %> <%= current_user.last_name %></h2>
-    <%= current_user.linkedin_email %>
-  </div>
-<% else %>
-  <div class="normal-user">
-    <h2><%= current_user.first_name %> <%= current_user.last_name %></h2>
-    <%= current_user.email %>
-  </div>
-<% end %>
-</div>
 
 <div class="likes-received-container">
   <div class="boss-list">
@@ -29,6 +13,7 @@
   <% end %>
   </ul>
   </div>
+
   <div class="employee-list">
   <h2>Potential Employees</h2>
   <ul>
@@ -39,8 +24,8 @@
   </div>
 </div>
 
+<div class="profile-cards">
 <h2>Your cards:</h2>
-
 <% @prospect_cards.each do |card| %>
 <% if current_user.oauth_token %>
   <% card.user_img = current_user.linkedin_profile_img %>
@@ -106,3 +91,4 @@
 </div>
 <% end %>
 </div>
+<footer><%= link_to 'Delete your account', destroy_user_path(current_user), :method=>'delete', :confirm=>'You sure?'%></footer>

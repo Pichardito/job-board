@@ -1,11 +1,13 @@
 
 <div class="main-board-container">
+<div class="main-board-header">
 <h1>General Assembly Search Engine</h1>
 
 <p>
   <%= link_to "Create a New Prospect Card", new_prospect_card_path, class: "btn btn-primary"  %> |
   <%= link_to 'Create a New Recruiter Card', new_recruiter_card_path, class: "btn btn-primary" %>
 </p>
+</div>
 
 <% @prospect_cards.each do |card| %>
 <% if current_user.oauth_token %>
