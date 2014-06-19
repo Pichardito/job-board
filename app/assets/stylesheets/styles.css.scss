@@ -29,8 +29,8 @@
 }
 
 .main-board-container {
-  width: 200em;
-  height: 200em;
+  width: 3000px;
+  height: 3000px;
 }
 
 form {
@@ -58,7 +58,7 @@ body {
   box-shadow: 10px 10px 5px grey;
   left: 10px;
   position: fixed;
-  z-index: 2;
+  z-index: 1000;
 }
 
 .profile-nav img {

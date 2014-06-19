@@ -1,37 +1,15 @@
 $(function(){
-  $('.prospect-card').draggable();
-  $('.recruiter-card').draggable();
 
-  var headers = $('.card-header');
+//******** SAVE CARD POSITION TO DATABASE WITH AJAX FUNCTIONS ********//
 
-  $.each(headers, function(idx, headerEl){
-    while ( $(headerEl).width() > 250 ) {
-      var fontSize = parseInt($(headerEl).css('font-size'));
-      fontSize = fontSize - 5;
-      $(headerEl).css('font-size', fontSize);
-    };
-  });
-
-  var cardTexts = $('.card-text');
-
-  $.each(cardTexts, function(idx, textEl){
-    while ( $(textEl).height() > 100 ) {
-      var fontSize = parseInt($(textEl).css('font-size'));
-      fontSize = fontSize - 5;
-      $(textEl).css('font-size', fontSize);
-    };
-  });
-
-  $('.main-board-container').droppable({
-    drop: function(event, position){
-
-      var cardId = position.draggable.data('id');
-      var cardType = position.draggable.attr('class').split(' ')[0];
-      var topPos = position.position.top;
-      var leftPos = position.position.left;
-
-      if ( cardType == 'prospect-card' ){
-        $.ajax({
+  $('.prospect-card').draggable({
+    containment: "document",
+    refreshPositions: true,
+    stop: function(event, ui){
+      var cardId = $(this).data('id');
+      var topPos = ui.offset.top;
+      var leftPos = ui.offset.left;
+      $.ajax({
           url: '/prospect_cards/' + cardId,
           method: 'put',
           dataType: 'json',
@@ -40,124 +18,110 @@ $(function(){
             console.log(data);
           }
         });
-      } else {
-        $.ajax({
-            url: '/recruiter_cards/' + cardId,
-            method: 'put',
-            dataType: 'json',
-            data: { recruiter_card: { left_pos: leftPos, top_pos: topPos } },
-            success: function(data){
-              console.log(data);
-            }
-        })
-      } //End of if/else
-    } //End of Drop function
-  }); //End of Droppable event
+      }
+    });
 
-
-
+  $('.recruiter-card').draggable({
+    containment: "document",
+    refreshPositions: true,
+    stop: function(event, ui){
+    var cardId = $(this).data('id');
+    var topPos = ui.offset.top;
+    var leftPos = ui.offset.left;
+    $.ajax({
+        url: '/recruiter_cards/' + cardId,
+        method: 'put',
+        dataType: 'json',
+        data: { recruiter_card: { left_pos: leftPos, top_pos: topPos } },
+        success: function(data){
+          console.log(data);
+        }
+      });
+    }
+  });
 
 $('.delete-pcard').on("click", function(e){
-
-    // $(this).parents('.prospect-card').remove()
-    e.preventDefault();
-
-    var that = this;
-    var cardId = $(this).parents('.prospect-card').data('id');
-
-          $.ajax({
-
+  e.preventDefault();
+  var that = this;
+  var cardId = $(this).parents('.prospect-card').data('id');
+  $.ajax({
       url: '/prospect_cards/'+ cardId,
-              method: 'delete',
-              dataType: 'json',
-              data: {recruiter_card: this.recruiter_card},
-              success: function(data){
+      method: 'delete',
+      dataType: 'json',
+      data: {recruiter_card: this.recruiter_card},
+      success: function(data){
         $(that).parents('.prospect-card').remove()
-              }
-    })
-
-    return false;
-
-  })
+      }
+    });
+  return false;
+});
 
 $('.delete-rcard').on("click", function(e){
-
-    // $(this).parents('.recruiter-card').remove()
-    e.preventDefault();
-
-    var that = this;
-    var rcardId = $(this).parents('.recruiter-card').data('id');
-          $.ajax({
+  e.preventDefault();
+  var that = this;
+  var rcardId = $(this).parents('.recruiter-card').data('id');
+  $.ajax({
       url: '/recruiter_cards/'+ rcardId,
-              method: 'delete',
-              dataType: 'json',
-              data: {recruiter_card: this.recruiter_card},
-              success: function(data){
+      method: 'delete',
+      dataType: 'json',
+      data: {recruiter_card: this.recruiter_card},
+      success: function(data){
         $(that).parents('.recruiter-card').remove()
-              }
-    })
+      }
+    });
+  return false;
+});
 
-    return false;
-
-  })
+//******** LIKE CARDS WITH AJAX FUNCTIONS ********//
 
 $('.like-pcard').on("click", function(e){
-
-    // $(this).parents('.prospect-card').remove()
-    e.preventDefault();
-
-    var target = e.target;
-    var that = this;
-    var cardId = $(this).parents('.prospect-card').data('id');
-
-          $.ajax({
-
+  e.preventDefault();
+  var target = e.target;
+  var that = this;
+  var cardId = $(this).parents('.prospect-card').data('id');
+  $.ajax({
       url: '/prospect_cards/'+ cardId + '/like',
-              method: 'post',
-              dataType: 'json',
-              data: {prospect_card: this.prospect_card},
-              success: function(data){
+      method: 'post',
+      dataType: 'json',
+      data: {prospect_card: this.prospect_card},
+      success: function(data){
         $(target).html('Liked');
-              }
-    })
-
-    return false;
-
-  })
+      }
+    });
+  return false;
+});
 
 $('.like-rcard').on("click", function(e){
+  e.preventDefault();
+  var target = e.target;
+  var that = this;
+  var cardId = $(this).parents('.recruiter-card').data('id');
+  $.ajax({
+    url: '/recruiter_cards/'+ cardId + '/like',
+    method: 'post',
+    dataType: 'json',
+    data: {recruiter_card: this.recruiter_card},
+    success: function(data){
+      $(target).html('Liked');    
+    }
+  });
+  return false;
+});
 
-    // $(this).parents('.prospect-card').remove()
-    e.preventDefault();
+//********* EDIT CARDS WITH AJAX FUNCTIONS**********//
 
-    var target = e.target;
-    var that = this;
-    var cardId = $(this).parents('.recruiter-card').data('id');
-
-          $.ajax({
-
-      url: '/recruiter_cards/'+ cardId + '/like',
-              method: 'post',
-              dataType: 'json',
-              data: {recruiter_card: this.recruiter_card},
-              success: function(data){
-        $(target).html('Liked');
-              }
-    })
-
-    return false;
-
-  })
-
-  $(".card-text").each(function(ele){
+$(".card-text").each(function(ele){
     var cardId = parseInt(this.parentElement.dataset.id);
+    var cardUserID = parseInt(this.parentElement.dataset.userId);
+    var currentuserid = parseInt(currentUser.id);
+    if (cardUserID === currentuserid){
     $(this).editInPlace({
         callback: function(unused, enteredText){
           $.ajax({
                 url: '/prospect_cards/'+ cardId,
                 method: 'put',
                 dataType: 'json',
-                data: {prospect_card: { 
+                data: {prospect_card: {
                   title: $(this).parent().find('.card-title').html(),
                   description: $(this).parent().find('.card-description').html(),
                   looking_for: $(this).parent().find('.card-looking_for').html()
@@ -167,20 +131,24 @@ $('.like-rcard').on("click", function(e){
                 }
           })
           return enteredText;
-        },
-        
+        }
+
     });
-  })
+  }
+})
 
 $(".rcard-text").each(function(ele){
     var cardId = parseInt(this.parentElement.dataset.id);
+    var cardUserID = parseInt(this.parentElement.dataset.userId);
+    var currentuserid = parseInt(currentUser.id);
+    if (cardUserID === currentuserid){
     $(this).editInPlace({
         callback: function(unused, enteredText){
           $.ajax({
                 url: '/recruiter_cards/'+ cardId,
                 method: 'put',
                 dataType: 'json',
-                data: {recruiter_card: { 
+                data: {recruiter_card: {
                   title: $(this).parent().find('.card-title').html(),
                   description: $(this).parent().find('.card-description').html(),
                   looking_for: $(this).parent().find('.card-looking_for').html()
@@ -191,11 +159,37 @@ $(".rcard-text").each(function(ele){
           })
           return enteredText;
         },
-        
     });
-  })
-  
- 
-
+  }
 });
 
+//********PREVENT TEXT OVERFLOW ON CARD TEXT FIELDS**********//
+
+  var headers = $('.card-header');
+  $.each(headers, function(idx, headerEl){
+    while ( $(headerEl).width() > 250 ) {
+      var fontSize = parseInt($(headerEl).css('font-size'));
+      fontSize = fontSize - 5;
+      $(headerEl).css('font-size', fontSize);
+    };
+  });
+
+  // var cardTexts = $('.card-text card-description', '.card-text card-looking_for', '.card-text card-title');
+  // $.each(cardTexts, function(idx, textEl){
+  //   while ( $(textEl).height() > 100 ) {
+  //     var fontSize = parseInt($(textEl).css('font-size'));
+  //     fontSize = fontSize - 5;
+  //     $(textEl).css('font-size', fontSize);
+  //   };
+  // });
+
+  // var cardTexts = $('.card-text');
+  // $.each(cardTexts, function(idx, textEl){
+  //   while ( $(textEl).height() > 100 ) {
+  //     var fontSize = parseInt($(textEl).css('font-size'));
+  //     fontSize = fontSize - 5;
+  //     $(textEl).css('font-size', fontSize);
+  //   };
+  // });
+
+});

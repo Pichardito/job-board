@@ -6,8 +6,8 @@
 </p>
 
 <% @prospect_cards.each do |card| %>
-<div class="card-pos" style="display: inline-block; position: relative; left:<%= card.left_pos %>px; top: <%= card.top_pos %>px;">
-<div class="prospect-card" data-id='<%= card.id %>' >
+<div class="card-pos" style="display: inline-block; position: absolute; left:<%= card.left_pos %>px; top: <%= card.top_pos %>px;">
+<div class="prospect-card" data-id='<%= card.id %>' data-user-id='<%= card.user_id %>'>
     <div class="card-header">
       <img src="<%= card.user_img %>">
       <strong><%= card.name %></strong>
@@ -27,9 +27,7 @@
     <% if card.user_id == current_user.id %>
       <%= link_to 'Delete', "/prospect_cards/#{card.id}", class: "delete-pcard btn btn-danger", method: :delete %>
     <% else %>
-
       <%= link_to 'Like', "/prospect_cards/#{card.id}/like", class: "like-pcard", method: :post %>
-
     <% end %>
   </div>
 </div>
@@ -37,8 +35,8 @@
 <% end %>
 
 <% @recruiter_cards.each do |card| %>
-<div class="card-pos" style="display: inline-block; position: relative; left:<%= card.left_pos %>px; top: <%= card.top_pos %>px;">
-<div class="recruiter-card" data-id='<%= card.id %>' >
+<div class="card-pos" style="display: inline-block; position: absolute; left:<%= card.left_pos %>px; top: <%= card.top_pos %>px;">
+<div class="recruiter-card" data-id='<%= card.id %>' data-user-id='<%= card.user_id %>'>
     <div class="card-header">
       <img src="<%= card.user_img %>">
       <strong><%= card.name %></strong>
@@ -65,10 +63,3 @@
 </div>
 <% end %>
 </div>
-
-
-
-
-
-
-
