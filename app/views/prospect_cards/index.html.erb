@@ -1,21 +1,11 @@
-
 <div class="main-board-container">
-<div class="main-board-header">
 <h1>General Assembly Search Engine</h1>
-
 <p>
   <%= link_to "Create a New Prospect Card", new_prospect_card_path, class: "btn btn-primary"  %> |
   <%= link_to 'Create a New Recruiter Card', new_recruiter_card_path, class: "btn btn-primary" %>
 </p>
-</div>
 
 <% @prospect_cards.each do |card| %>
-<% if current_user.oauth_token %>
-  <% card.user_img = current_user.linkedin_profile_img %>
-<% else %>
-  <% card.user_img = asset_path('profile_image.jpg') %>
-<% end %>
-
 <div class="card-pos" style="display: inline-block; position: absolute; left:<%= card.left_pos %>px; top: <%= card.top_pos %>px;">
 <div class="prospect-card" data-id='<%= card.id %>' data-user-id='<%= card.user_id %>'>
     <div class="card-header">
@@ -45,12 +35,6 @@
 <% end %>
 
 <% @recruiter_cards.each do |card| %>
-<% if current_user.oauth_token %>
-  <% card.user_img = current_user.linkedin_profile_img %>
-<% else %>
-  <% card.user_img = asset_path('profile_image.jpg') %>
-<% end %>
-
 <div class="card-pos" style="display: inline-block; position: absolute; left:<%= card.left_pos %>px; top: <%= card.top_pos %>px;">
 <div class="recruiter-card" data-id='<%= card.id %>' data-user-id='<%= card.user_id %>'>
     <div class="card-header">
