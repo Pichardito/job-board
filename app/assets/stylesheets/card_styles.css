@@ -45,6 +45,7 @@
   outline:0;
   height: 80px;
   font-size: 1em;
+  width: 410px;
 }
 
 .prospect-card input[type=text]:hover {
@@ -102,6 +103,7 @@
   outline:0;
   height: 80px;
   font-size: 1em;
+  width: 410px;
 }
 
 .recruiter-card input[type=text]:hover {
