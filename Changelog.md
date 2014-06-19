@@ -34,6 +34,18 @@ JobBoard Changelog
 * 46 tests, 2 failing due to incomplete and ongoing AJAX implementation
 * Git merge issues resolved
 
+6/17/14 -
+* Login validation working
+* Edit user validation working
+* Styling
+* Images appearing on Heroku
+
+6/18/14 -
+* Routes testing
+* 76 passing tests
+* You can no longer edit other people's cards
+* Default profile pics appear on cards
+* Cards remain in place where you left them
 
 
 
