@@ -108,7 +108,9 @@ $('.like-rcard').on("click", function(e){
 
 $(".card-text").each(function(ele){
     var cardId = parseInt(this.parentElement.dataset.id);
-    if (cardId === currentUser.id){
+    var cardUserID = parseInt(this.parentElement.dataset.userId);
+    var currentuserid = parseInt(currentUser.id);
+    if (cardUserID === currentuserid){
     $(this).editInPlace({
         callback: function(unused, enteredText){
           $.ajax({
@@ -133,9 +135,9 @@ $(".card-text").each(function(ele){
 
 $(".rcard-text").each(function(ele){
     var cardId = parseInt(this.parentElement.dataset.id);
-    debugger;
-    if (cardId === parseInt(currentUser.id)){
-      debugger;
+    var cardUserID = parseInt(this.parentElement.dataset.userId);
+    var currentuserid = parseInt(currentUser.id);
+    if (cardUserID === currentuserid){
     $(this).editInPlace({
         callback: function(unused, enteredText){
           $.ajax({
