@@ -165,14 +165,14 @@ $(".rcard-text").each(function(ele){
 
 //********PREVENT TEXT OVERFLOW ON CARD TEXT FIELDS**********//
 
-  // var headers = $('.card-header');
-  // $.each(headers, function(idx, headerEl){
-  //   while ( $(headerEl).width() > 250 ) {
-  //     var fontSize = parseInt($(headerEl).css('font-size'));
-  //     fontSize = fontSize - 5;
-  //     $(headerEl).css('font-size', fontSize);
-  //   };
-  // });
+  var headers = $('.card-header strong');
+  $.each(headers, function(idx, nameEl){
+    var overNine = /.{9,}/;
+    var fontSize = parseInt($(nameEl).css('font-size'));
+    if ( overNine.test($(nameEl).html()) ){
+      $(nameEl).css('font-size', 12);
+    }
+  });
 
   // var cardTexts = $('.card-text card-description', '.card-text card-looking_for', '.card-text card-title');
   // $.each(cardTexts, function(idx, textEl){
